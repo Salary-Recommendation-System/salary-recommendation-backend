@@ -1,6 +1,6 @@
 database:
   host: 34.123.124.11
   port: 5432
-  name: salary-recommendation-pg-instance
+  name: salary-recommendation-system:us-central1:salary-recommendation-pg-instance
   user: postgres
-  password: 0E=8G+x=m,)Lm*B3
+  password: suhafazal7

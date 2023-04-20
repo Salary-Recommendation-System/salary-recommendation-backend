@@ -13,6 +13,11 @@ from datetime import datetime
 app = Flask(__name__)
 
 
+@app.route("/")
+def load():
+    return jsonify('{message: hello}'), 200
+
+
 @app.route('/api/v1/save_info', methods=['POST'])
 def save_salary_information_api():
     # Accessing the json request
@@ -40,7 +45,7 @@ def save_salary_information_api():
         information_user = InformationUser(education_level, work_experience, designation, created_date_time,
                                            float(salary_amount), no_of_employees, primary_technology,
                                            float(user_rating),
-                                           int(year_payment),currency_type)
+                                           int(year_payment), currency_type)
 
         saved_response = saving_data_obj.save(information_user)
         response = jsons.dump(saved_response)
@@ -94,10 +99,9 @@ def create_table(schema_name):
 
 @app.route('/api/v1/rating/<id>', methods=['PUT'])
 def update_rating(id):
-
     rating = request.args.get('rating')
     service = SaveSalaryInformationServiceImpl()
-    created_response = service.update_rating(int(rating),int(id))
+    created_response = service.update_rating(int(rating), int(id))
 
     response = jsons.dump(created_response)
     return jsonify(response), 200
