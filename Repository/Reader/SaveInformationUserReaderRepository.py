@@ -19,18 +19,32 @@ class SaveInformationUserReaderRepository(SaveInformationUserRepository):
                                           password=config.get('password'),
                                           host=config.get('host'))
             if amount is None:
-                query = UserInformationQueryUtils.get_all_information(work_experience, education, designation,
-                                                                      no_of_employees)
-                print(query)
-                dataframe = pd.read_sql(query, connection)
-                connection.close()
-                return dataframe
+                try:
+                    query = UserInformationQueryUtils.get_all_information(work_experience, education, designation,
+                                                                          no_of_employees)
+                    dataframe = pd.read_sql(query, connection)
+                    connection.close()
+                    return dataframe
+                except Exception as e:
+                    query = UserInformationQueryUtils.get_information_by_designation(designation)
+                    dataframe = pd.read_sql(query,connection)
+                    connection.close()
+                    return dataframe
+
             else:
-                query = UserInformationQueryUtils.get_information(work_experience,education,designation,no_of_employees,
-                                                                  amount)
-                dataframe = pd.read_sql(query, connection)
-                connection.close()
-                return dataframe
+                try:
+
+                    query = UserInformationQueryUtils.get_information(work_experience,education,designation,
+                                                                      no_of_employees,amount)
+                    dataframe = pd.read_sql(query, connection)
+                    connection.close()
+                    return dataframe
+                except Exception as e:
+                    query = UserInformationQueryUtils.get_information_by_designation(designation)
+                    dataframe = pd.read_sql(query, connection)
+                    connection.close()
+                    return dataframe
+
         except psycopg2.errors.ConnectionException:
             return Response(Message.DB_CONNECTION_FAILED.value, Message.DB_CONNECTION_FAILED.message)
         except Exception as e:

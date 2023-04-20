@@ -40,3 +40,7 @@ def get_information(work_experience, education, designation, no_of_employees, am
 
 def update_rating(rating, id):
     return "UPDATE recommendation.salary_details SET user_rating='{}' WHERE id = '{}'".format(float(rating), int(id))
+
+
+def get_information_by_designation(designation):
+    return "SELECT * FROM recommendation.salary_details WHERE designation = '{}'".format(designation)

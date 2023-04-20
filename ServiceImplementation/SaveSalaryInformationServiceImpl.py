@@ -35,6 +35,7 @@ class SaveSalaryInformationServiceImpl(SaveSalaryInformationService):
                         format='%(asctime)s %(levelname)s %(message)s')
 
     def create(self, schema_name):
+        logging.info("SaveSalaryInformationServiceImpl: gonna create call the Writer repository")
         writer_repository = SaveInformationUserWriterRepository()
         return writer_repository.create(schema_name)
 
