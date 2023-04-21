@@ -28,19 +28,18 @@ class SaveInformationUserReaderRepository(SaveInformationUserRepository):
                     dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
 
                     # Close the engine
-                    engine.connect().close()
+                    engine.dispose()
 
                     # Return the DataFrame
                     return dataframe
                 except Exception as e:
-                    print(e)
                     result = engine.connect().execute(db_session.query(SalaryDetail).filter
                                                       (SalaryDetail.designation == str(designation)).statement)
                     # Convert the result to a Pandas DataFrame
                     dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
 
                     # Close the engine
-                    engine.connect().close()
+                    engine.dispose()
                     return dataframe
 
             else:
@@ -60,7 +59,7 @@ class SaveInformationUserReaderRepository(SaveInformationUserRepository):
                     dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
 
                     # Close the engine
-                    engine.connect().close()
+                    engine.dispose()
                     return dataframe
                 except Exception as e:
                     result = engine.connect().execute(db_session.query(SalaryDetail).filter
@@ -69,7 +68,7 @@ class SaveInformationUserReaderRepository(SaveInformationUserRepository):
                     dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
 
                     # Close the engine
-                    engine.connect().close()
+                    engine.dispose()
                     return dataframe
 
         except SQLAlchemyError as e:
