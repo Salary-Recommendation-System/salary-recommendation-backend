@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy import create_engine
 
+
 db = SQLAlchemy()
 
 
@@ -63,6 +64,7 @@ def db_connection(app):
     config = Config()
 
     build_uri = f"postgresql://{config.get('user')}:{config.get('password')}@{config.get('host')}/{config.get('name')}"
+    app.logger.info(build_uri)
     app.config['SQLALCHEMY_DATABASE_URI'] = build_uri
     db.init_app(app)
     with app.app_context():

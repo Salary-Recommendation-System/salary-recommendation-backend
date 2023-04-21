@@ -461,3 +461,7 @@ AttributeError: 'NoneType' object has no attribute 'to_dict'
 2023-04-21 18:01:07,037 INFO 127.0.0.1 - - [21/Apr/2023 18:01:07] "POST /api/v1/encoded?encode_specific=YES HTTP/1.1" 200 -
 2023-04-21 18:01:21,052 INFO 127.0.0.1 - - [21/Apr/2023 18:01:21] "POST /api/v1/encoded?encode_specific=NO HTTP/1.1" 200 -
 2023-04-21 18:01:34,287 INFO 127.0.0.1 - - [21/Apr/2023 18:01:34] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-21 21:37:39,120 INFO This is an informational message
+2023-04-21 21:37:47,006 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-21 21:37:47,006 INFO [33mPress CTRL+C to quit[0m
