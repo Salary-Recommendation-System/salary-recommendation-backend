@@ -1,64 +1,91 @@
-import psycopg2.errors
+from sqlalchemy.exc import SQLAlchemyError
 
 from Repository.SaveInformationUserRepository import SaveInformationUserRepository
-from Resources.Database import db_connection
+from Resources.Database import SalaryDetail, create_database_engine
 from Utils.Message import Message
 from Utils.Response import Response
-from Utils.Scripts import UserInformationQueryUtils
 import pandas as pd
-import psycopg2
-from Resources.Config import Config
+
+engine = create_database_engine()
 
 
 class SaveInformationUserReaderRepository(SaveInformationUserRepository):
 
-    def get_all_saved_information(self, work_experience, education, designation, no_of_employees,amount):
+    def get_all_saved_information(self, db_session, work_experience, education, designation, no_of_employees, amount):
         try:
-            config = Config()
-            connection = psycopg2.connect(database=config.get('name'), user=config.get('user'),
-                                          password=config.get('password'),
-                                          host=config.get('host'))
             if amount is None:
                 try:
-                    query = UserInformationQueryUtils.get_all_information(work_experience, education, designation,
-                                                                          no_of_employees)
-                    dataframe = pd.read_sql(query, connection)
-                    connection.close()
+                    filters = [
+                        SalaryDetail.work_experience == str(work_experience),
+                        SalaryDetail.education_level == str(education),
+                        SalaryDetail.designation == str(designation),
+                        SalaryDetail.no_of_employees == str(no_of_employees)
+
+                    ]
+                    result = engine.connect().execute(db_session.query(SalaryDetail).filter(*filters).statement)
+
+                    # Convert the result to a Pandas DataFrame
+                    dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
+
+                    # Close the engine
+                    engine.connect().close()
+
+                    # Return the DataFrame
                     return dataframe
                 except Exception as e:
-                    query = UserInformationQueryUtils.get_information_by_designation(designation)
-                    dataframe = pd.read_sql(query,connection)
-                    connection.close()
+                    print(e)
+                    result = engine.connect().execute(db_session.query(SalaryDetail).filter
+                                                      (SalaryDetail.designation == str(designation)).statement)
+                    # Convert the result to a Pandas DataFrame
+                    dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
+
+                    # Close the engine
+                    engine.connect().close()
                     return dataframe
 
             else:
                 try:
 
-                    query = UserInformationQueryUtils.get_information(work_experience,education,designation,
-                                                                      no_of_employees,amount)
-                    dataframe = pd.read_sql(query, connection)
-                    connection.close()
+                    filters = [
+                        SalaryDetail.work_experience == str(work_experience),
+                        SalaryDetail.education_level == str(education),
+                        SalaryDetail.designation == str(designation),
+                        SalaryDetail.no_of_employees == str(no_of_employees),
+                        SalaryDetail.salary_amount == float(amount)
+                    ]
+
+                    result = engine.connect().execute(db_session.query(SalaryDetail).filter(*filters).statement)
+
+                    # Convert the result to a Pandas DataFrame
+                    dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
+
+                    # Close the engine
+                    engine.connect().close()
                     return dataframe
                 except Exception as e:
-                    query = UserInformationQueryUtils.get_information_by_designation(designation)
-                    dataframe = pd.read_sql(query, connection)
-                    connection.close()
+                    result = engine.connect().execute(db_session.query(SalaryDetail).filter
+                                                      (SalaryDetail.designation == str(designation)).statement)
+                    # Convert the result to a Pandas DataFrame
+                    dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
+
+                    # Close the engine
+                    engine.connect().close()
                     return dataframe
 
-        except psycopg2.errors.ConnectionException:
-            return Response(Message.DB_CONNECTION_FAILED.value, Message.DB_CONNECTION_FAILED.message)
+        except SQLAlchemyError as e:
+            db_session.rollback()
         except Exception as e:
             print(e)
             return Response(e, 400)
 
-    def save(self, information_user):
+    def save(self, db_session, information_user):
         pass
 
-    def create(self, schema_name):
+    def create(self, db_session, schema_name):
         pass
 
-    def save_from_excel(self, information):
+    def save_from_excel(self, db_session, information):
         pass
 
-    def update_rating(self,rating, id):
+    def update_rating(self, db_session, rating, id):
         pass

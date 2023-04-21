@@ -1,34 +1,31 @@
+from sqlalchemy.exc import SQLAlchemyError
+
 from Repository.EncodedSalaryRepository import EncodedSalaryRepository
-from Resources.Database import db_connection
+from Resources.Database import db_connection, EncodedSalaryConversion
 from Utils.Message import Message
 from Utils.Response import Response
-from Utils.Scripts import EncodedSalaryDetailUtils
 import psycopg2.errors
 
 
 class EncodedSalaryReaderRepository(EncodedSalaryRepository):
 
-    def get_encode_data(self, work_experience, education, company_size, designation):
+    def get_encode_data(self, db_session, work_experience, education, company_size, designation):
         try:
-            database = db_connection()
-            query = EncodedSalaryDetailUtils.get_based_on_parameters(work_experience, education, company_size,
-                                                                     designation)
-            database.cursor.execute(query)
-            information = database.cursor.fetchall()
-            database.cursor.close()
-            database.connection.close()
-            return information
-        except psycopg2.errors.ConnectionException:
-            return Response(Message.DB_CONNECTION_FAILED.value, Message.DB_CONNECTION_FAILED.message)
+            data = db_session.query(EncodedSalaryConversion).filter(
+                EncodedSalaryConversion.unique_code.in_(
+                    [str(work_experience), str(education), str(company_size), str(designation)]
+                )
+            ).all()
+
+            return data
+        except SQLAlchemyError as e:
+            db_session.rollback()
         except Exception as e:
             print(e)
             return Response(e, 400)
 
-    def create(self, schema_name, encoded_table):
+    def save(self, db_session, encode_information):
         pass
 
-    def save(self, encode_information):
-        pass
-
-    def save_encode_data(self, binary_information):
+    def save_encode_data(self, db_session, binary_information):
         pass

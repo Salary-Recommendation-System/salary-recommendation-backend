@@ -1,89 +1,52 @@
 from datetime import datetime
 
-import psycopg2.errors
-
 from Repository.SaveInformationUserRepository import SaveInformationUserRepository
-from Resources.Database import db_connection, get_configurations
+from Resources.Database import SalaryDetail
 from Utils.Message import Message
 from Utils.Response import Response
-from Utils.Scripts import UserInformationQueryUtils
 
 
 class SaveInformationUserWriterRepository(SaveInformationUserRepository):
 
-    def create(self, schema_name):
-        try:
-            database = db_connection()
-            create_query = UserInformationQueryUtils.create(schema_name)
-            database.cursor.execute(create_query)
-            database.connection.commit()
-            database.cursor.close()
-            database.connection.close()
-            return Response(Message.DB_TABLE_CREATED.value, Message.DB_TABLE_CREATED.message)
-        except psycopg2.errors.DuplicateTable:
-            return Response(Message.DB_TABLE_ALREADY_CREATED.value, Message.DB_TABLE_ALREADY_CREATED.message)
-        except Exception as e:
-            print(e)
-            return Response(Message.DB_CONNECTION_FAILED.value, Message.DB_CONNECTION_FAILED.message)
-
-    def save(self, information_user):
+    def save(self, db_session, information_user):
 
         try:
-            database = db_connection()
-            save_query = UserInformationQueryUtils.save(information_user.get_education_level(),
-                                                        information_user.get_work_experience(),
-                                                        information_user.get_designation(),
-                                                        information_user.get_created_date_time(),
-                                                        information_user.get_salary_amount(),
-                                                        information_user.get_no_of_employees(),
-                                                        information_user.get_primary_technology(),
-                                                        information_user.get_user_rating(),
-                                                        information_user.get_year_of_payment())
+            salary_details = SalaryDetail(education_level=information_user.get_education_level(),
+                                          work_experience=information_user.get_work_experience(),
+                                          designation=information_user.get_designation(),
+                                          created_date_time=information_user.get_created_date_time(),
+                                          salary_amount=information_user.get_salary_amount(),
+                                          no_of_employees=information_user.get_no_of_employees(),
+                                          primary_technology=information_user.get_primary_technology(),
+                                          user_rating=information_user.get_user_rating(),
+                                          year_of_payment=information_user.get_year_of_payment())
+            db_session.add(salary_details)
+            db_session.commit()
 
-            print(save_query)
-            database.cursor.execute(save_query)
-            database.connection.commit()
-            database.cursor.close()
-            database.connection.close()
             return Response(Message.SUCCESS_MESSAGE.value, Message.SUCCESS_MESSAGE.message)
         except Exception as e:
             print(e)
             return Response(Message.DB_CONNECTION_FAILED.value, Message.DB_CONNECTION_FAILED.message)
 
-    def save_from_excel(self, information):
-
+    def save_from_excel(self, db_session, information):
         try:
-            database = db_connection()
-
             for index, row in information.iterrows():
-                save_query = UserInformationQueryUtils.save(row['Education'], row['Work experience'],
-                                                            row['Designation'], datetime.now(), int(row['Amount']),
-                                                            row['Company size'], '', 2.0, int(row['Year']))
-                database.cursor.execute(save_query)
-
-            database.connection.commit()
-            database.cursor.close()
-            database.connection.close()
+                salary_details = SalaryDetail(education_level=row['Education'], work_experience=row['Work experience'],
+                                              designation=row['Designation'], created_date_time=datetime.now(),
+                                              salary_amount=int(row['Amount']), no_of_employees=row['Company size'],
+                                              primary_technology='', user_rating=2.0, year_of_payment=int(row['Year']))
+                db_session.add(salary_details)
+            db_session.commit()
             return Response(Message.SUCCESS_MESSAGE.value, Message.SUCCESS_MESSAGE.message)
-
-        except psycopg2.errors.SavepointException:
-            return Response(Message.SAVING_FAILED.value, Message.SAVING_FAILED.message)
-
         except Exception as e:
             print(e)
             return Response(Message.DB_CONNECTION_FAILED.value, Message.DB_CONNECTION_FAILED.message)
 
-    def update_rating(self, rating,id):
+    def update_rating(self, db_session, rating, id):
         try:
-            database = db_connection()
-            update_query = UserInformationQueryUtils.update_rating(rating,id)
-            database.cursor.execute(update_query)
-            database.connection.commit()
-            database.cursor.close()
-            database.connection.close()
-            return Response(Message.SUCCESSFULLY_UPDATED_WITH_INFORMATION.value,
-                            Message.SUCCESSFULLY_UPDATED_WITH_INFORMATION.message)
-        except psycopg2.errors.DataException:
+
+            db_session.query(SalaryDetail).filter(SalaryDetail.id == id).update({'user_rating': rating})
+            db_session.commit()
             return Response(Message.SUCCESSFULLY_UPDATED_WITH_INFORMATION.value,
                             Message.SUCCESSFULLY_UPDATED_WITH_INFORMATION.message)
         except Exception as e:
@@ -91,5 +54,5 @@ class SaveInformationUserWriterRepository(SaveInformationUserRepository):
             return Response(Message.SUCCESSFULLY_UPDATED_WITH_INFORMATION.value,
                             Message.SUCCESSFULLY_UPDATED_WITH_INFORMATION.message)
 
-    def get_all_saved_information(self, work_experience, education, designation, no_of_employees,amount):
+    def get_all_saved_information(self, db_session, work_experience, education, designation, no_of_employees, amount):
         pass
