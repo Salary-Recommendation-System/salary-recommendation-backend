@@ -688,3 +688,114 @@ AttributeError: 'NoneType' object has no attribute 'to_dict'
 2023-04-23 20:00:54,116 INFO SaveSalaryInformationServiceImpl: save salary information
 2023-04-23 20:00:54,171 INFO SaveSalaryInformationServiceImpl: Successfully saved the information's provided
 2023-04-23 20:00:54,172 INFO 127.0.0.1 - - [23/Apr/2023 20:00:54] "POST /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1" 200 -
+2023-04-23 20:07:23,051 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 20:07:23,051 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 20:07:35,316 INFO SaveSalaryInformationServiceImpl: save salary information
+2023-04-23 20:07:38,306 INFO SaveSalaryInformationServiceImpl: Successfully saved the information's provided
+2023-04-23 20:07:38,308 INFO 127.0.0.1 - - [23/Apr/2023 20:07:38] "POST /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1" 200 -
+2023-04-23 20:07:45,534 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\main.py", line 67, in get_recommendation
+    created_response = get_recommendation_result.save(recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 70, in save
+    if len(encoded_service_impl) != 0:
+TypeError: object of type 'Response' has no len()
+2023-04-23 20:07:45,538 INFO 127.0.0.1 - - [23/Apr/2023 20:07:45] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-04-23 20:08:29,753 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 20:08:29,753 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 20:08:44,312 INFO 127.0.0.1 - - [23/Apr/2023 20:08:44] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-23 20:10:46,853 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 20:10:46,854 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 20:16:17,284 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 20:16:17,285 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 20:18:16,666 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 20:18:16,666 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 20:18:21,391 INFO 127.0.0.1 - - [23/Apr/2023 20:18:21] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-23 20:53:56,168 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 20:53:56,169 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 20:57:18,615 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 20:57:18,616 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 21:00:05,214 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 21:00:05,214 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 21:00:15,967 INFO 127.0.0.1 - - [23/Apr/2023 21:00:15] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-23 21:02:20,898 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 21:02:20,899 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 21:02:53,628 INFO 127.0.0.1 - - [23/Apr/2023 21:02:53] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-23 22:07:23,372 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 22:07:23,373 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 22:07:44,356 INFO 127.0.0.1 - - [23/Apr/2023 22:07:44] "GET /api/v1/create_table/recommendation?information_provider=YES HTTP/1.1" 200 -
+2023-04-23 22:10:28,643 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 22:10:28,643 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 22:10:49,561 INFO 127.0.0.1 - - [23/Apr/2023 22:10:49] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-23 22:11:18,493 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 22:11:18,493 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 22:11:24,510 INFO 127.0.0.1 - - [23/Apr/2023 22:11:24] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-23 22:11:53,980 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 22:11:53,980 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 22:12:57,824 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 22:12:57,825 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 22:13:44,511 INFO 127.0.0.1 - - [23/Apr/2023 22:13:44] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-23 22:19:28,187 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 22:19:28,188 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 22:20:52,276 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 22:20:52,276 INFO [33mPress CTRL+C to quit[0m
+2023-04-23 22:22:01,915 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-23 22:22:01,915 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 00:16:22,890 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 00:16:22,890 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 00:17:03,463 INFO 127.0.0.1 - - [24/Apr/2023 00:17:03] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-24 00:17:23,314 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 00:17:23,314 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 00:18:15,859 INFO 127.0.0.1 - - [24/Apr/2023 00:18:15] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-24 00:20:03,966 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 00:20:03,966 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 00:20:28,140 INFO 127.0.0.1 - - [24/Apr/2023 00:20:28] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-24 00:22:21,009 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 00:22:21,009 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 00:23:31,417 INFO 127.0.0.1 - - [24/Apr/2023 00:23:31] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-24 00:24:53,368 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 00:24:53,368 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 00:26:14,914 INFO 127.0.0.1 - - [24/Apr/2023 00:26:14] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-24 00:28:25,301 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 00:28:25,302 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 00:29:32,070 INFO 127.0.0.1 - - [24/Apr/2023 00:29:32] "GET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1" 200 -
+2023-04-24 00:36:05,300 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 00:36:05,300 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 00:37:31,590 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 00:37:31,590 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 00:40:11,844 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 00:40:11,844 INFO [33mPress CTRL+C to quit[0m

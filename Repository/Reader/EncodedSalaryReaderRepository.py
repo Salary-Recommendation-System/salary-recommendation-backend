@@ -1,5 +1,5 @@
 from Repository.EncodedSalaryRepository import EncodedSalaryRepository
-from Resources.Database import Database
+from Resources.Database import open_connection
 from Utils.Message import Message
 from Utils.Response import Response
 import psycopg2.errors
@@ -20,11 +20,11 @@ class EncodedSalaryReaderRepository(EncodedSalaryRepository):
 
     def get_encode_data(self, work_experience, education, company_size, designation):
         try:
-            with Database() as database:
+            with open_connection().cursor() as cursor:
                 query = EncodedSalaryDetailUtils.get_based_on_parameters(work_experience, education, company_size,
                                                                          designation)
-                database.cursor.execute(query)
-                information = database.cursor.fetchall()
+                cursor.execute(query)
+                information = cursor.fetchall()
             return information
         except psycopg2.errors.ConnectionException:
             return Response(Message.DB_CONNECTION_FAILED.value, Message.DB_CONNECTION_FAILED.message)

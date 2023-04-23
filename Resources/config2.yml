@@ -1,0 +1,6 @@
+database:
+  host: 34.123.124.11
+  port: 5432
+  name: salarydb
+  user: root
+  password: salarydb

@@ -3,7 +3,7 @@ from datetime import datetime
 import psycopg2.errors
 
 from Repository.SaveInformationUserRepository import SaveInformationUserRepository
-from Resources.Database import Database
+from Resources.Database import open_connection
 from Utils.Message import Message
 from Utils.Response import Response
 from Utils.Scripts import UserInformationQueryUtils
@@ -17,7 +17,7 @@ class SaveInformationUserWriterRepository(SaveInformationUserRepository):
     def save(self, information_user):
 
         try:
-            with Database() as database:
+            with open_connection().cursor() as cursor:
                 save_query = UserInformationQueryUtils.save(information_user.get_education_level(),
                                                             information_user.get_work_experience(),
                                                             information_user.get_designation(),
@@ -28,7 +28,7 @@ class SaveInformationUserWriterRepository(SaveInformationUserRepository):
                                                             information_user.get_user_rating(),
                                                             information_user.get_year_of_payment())
 
-                database.cursor.execute(save_query)
+                cursor.execute(save_query)
             return Response(Message.SUCCESS_MESSAGE.value, Message.SUCCESS_MESSAGE.message)
         except Exception as e:
             print(e)
@@ -37,13 +37,13 @@ class SaveInformationUserWriterRepository(SaveInformationUserRepository):
     def save_from_excel(self, information):
 
         try:
-            with Database() as database:
+            with open_connection().cursor() as cursor:
 
                 for index, row in information.iterrows():
                     save_query = UserInformationQueryUtils.save(row['Education'], row['Work experience'],
                                                                 row['Designation'], datetime.now(), int(row['Amount']),
                                                                 row['Company size'], '', 2.0, int(row['Year']))
-                    database.cursor.execute(save_query)
+                    cursor.execute(save_query)
             return Response(Message.SUCCESS_MESSAGE.value, Message.SUCCESS_MESSAGE.message)
 
         except psycopg2.errors.SavepointException:
@@ -55,9 +55,9 @@ class SaveInformationUserWriterRepository(SaveInformationUserRepository):
 
     def update_rating(self, rating, id):
         try:
-            with Database() as database:
+            with open_connection().cursor() as cursor:
                 update_query = UserInformationQueryUtils.update_rating(rating, id)
-                database.cursor.execute(update_query)
+                cursor.execute(update_query)
             return Response(Message.SUCCESSFULLY_UPDATED_WITH_INFORMATION.value,
                             Message.SUCCESSFULLY_UPDATED_WITH_INFORMATION.message)
         except psycopg2.errors.DataException:
@@ -70,9 +70,9 @@ class SaveInformationUserWriterRepository(SaveInformationUserRepository):
 
     def create(self, schema_name):
         try:
-            with Database() as database:
+            with open_connection().cursor() as cursor:
                 create_query = UserInformationQueryUtils.create(schema_name)
-                database.cursor.execute(create_query)
+                cursor.execute(create_query)
             return Response(Message.DB_TABLE_CREATED.value, Message.DB_TABLE_CREATED.message)
         except psycopg2.errors.DuplicateTable:
             return Response(Message.DB_TABLE_ALREADY_CREATED.value, Message.DB_TABLE_ALREADY_CREATED.message)
