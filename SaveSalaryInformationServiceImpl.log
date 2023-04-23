@@ -465,3 +465,98 @@ AttributeError: 'NoneType' object has no attribute 'to_dict'
 2023-04-21 21:37:47,006 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
 2023-04-21 21:37:47,006 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 01:52:05,164 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 01:52:05,165 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:03:51,808 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:03:51,808 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:04:51,273 INFO 127.0.0.1 - - [24/Apr/2023 02:04:51] "[33mGET /api/v1/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1[0m" 404 -
+2023-04-24 02:05:43,247 INFO 127.0.0.1 - - [24/Apr/2023 02:05:43] "[33mGET /create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1[0m" 404 -
+2023-04-24 02:06:08,439 INFO 127.0.0.1 - - [24/Apr/2023 02:06:08] "[33mGET /create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1[0m" 404 -
+2023-04-24 02:11:11,140 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:11:11,141 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:11:23,941 INFO 127.0.0.1 - - [24/Apr/2023 02:11:23] "[33mGET /api/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1[0m" 404 -
+2023-04-24 02:12:22,498 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:12:22,498 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:12:44,971 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:12:44,971 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:12:54,619 INFO 127.0.0.1 - - [24/Apr/2023 02:12:54] "[32mGET /api HTTP/1.1[0m" 308 -
+2023-04-24 02:12:54,637 INFO 127.0.0.1 - - [24/Apr/2023 02:12:54] "GET /api/ HTTP/1.1" 200 -
+2023-04-24 02:13:00,020 INFO 127.0.0.1 - - [24/Apr/2023 02:13:00] "[33mGET /api/create_table/recommendation?information_provider=ENCODE_DATA HTTP/1.1[0m" 404 -
+2023-04-24 02:14:11,323 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:14:11,323 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:16:05,614 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:16:05,617 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:18:35,036 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:18:35,036 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:19:01,310 INFO 127.0.0.1 - - [24/Apr/2023 02:19:01] "[32mGET /api HTTP/1.1[0m" 308 -
+2023-04-24 02:19:01,336 INFO 127.0.0.1 - - [24/Apr/2023 02:19:01] "GET /api/ HTTP/1.1" 200 -
+2023-04-24 02:19:19,287 INFO 127.0.0.1 - - [24/Apr/2023 02:19:19] "[33mPOST /api/v1/save_info?saved_existing_data=TRUE HTTP/1.1[0m" 404 -
+2023-04-24 02:19:24,710 ERROR Exception on /api/save_info [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 29, in save_salary_information_api
+    created_response = saving_data_obj.save_existing_data(db.db_session)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask_sqlalchemy\extension.py", line 1005, in __getattr__
+    raise AttributeError(name)
+AttributeError: db_session
+2023-04-24 02:19:24,766 INFO 127.0.0.1 - - [24/Apr/2023 02:19:24] "[35m[1mPOST /api/save_info?saved_existing_data=TRUE HTTP/1.1[0m" 500 -
+2023-04-24 02:20:01,896 INFO 127.0.0.1 - - [24/Apr/2023 02:20:01] "[33mGET /api/v1 HTTP/1.1[0m" 404 -
+2023-04-24 02:20:10,961 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:20:10,961 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:20:19,618 INFO 127.0.0.1 - - [24/Apr/2023 02:20:19] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-04-24 02:20:19,625 INFO 127.0.0.1 - - [24/Apr/2023 02:20:19] "GET /api/v1/ HTTP/1.1" 200 -
+2023-04-24 02:20:40,667 ERROR Exception on /api/v1/save_info [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 29, in save_salary_information_api
+    created_response = saving_data_obj.save_existing_data(db.db_session)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask_sqlalchemy\extension.py", line 1005, in __getattr__
+    raise AttributeError(name)
+AttributeError: db_session
+2023-04-24 02:20:40,673 INFO 127.0.0.1 - - [24/Apr/2023 02:20:40] "[35m[1mPOST /api/v1/save_info?saved_existing_data=TRUE HTTP/1.1[0m" 500 -
+2023-04-24 02:21:03,369 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:21:03,370 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:21:17,695 INFO 127.0.0.1 - - [24/Apr/2023 02:21:17] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-04-24 02:21:17,708 INFO 127.0.0.1 - - [24/Apr/2023 02:21:17] "GET /api/v1/ HTTP/1.1" 200 -
+2023-04-24 02:22:59,305 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:22:59,305 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:23:18,556 INFO 127.0.0.1 - - [24/Apr/2023 02:23:18] "POST /api/v1/save_info?saved_existing_data=TRUE HTTP/1.1" 200 -
+2023-04-24 02:23:30,682 INFO 127.0.0.1 - - [24/Apr/2023 02:23:30] "POST /api/v1/encoded HTTP/1.1" 200 -
+2023-04-24 02:23:36,613 INFO 127.0.0.1 - - [24/Apr/2023 02:23:36] "POST /api/v1/encoded?encode_specific=YES HTTP/1.1" 200 -
+2023-04-24 02:23:57,223 INFO 127.0.0.1 - - [24/Apr/2023 02:23:57] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 02:28:31,561 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:28:31,562 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:29:28,729 INFO 127.0.0.1 - - [24/Apr/2023 02:29:28] "POST /api/v1/save_info?saved_existing_data=TRUE HTTP/1.1" 200 -
+2023-04-24 02:35:58,266 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 02:35:58,266 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 02:36:16,718 INFO 127.0.0.1 - - [24/Apr/2023 02:36:16] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 02:37:17,223 INFO 127.0.0.1 - - [24/Apr/2023 02:37:17] "POST /api/v1/encoded?encode_specific=YES HTTP/1.1" 200 -
+2023-04-24 02:37:23,924 INFO 127.0.0.1 - - [24/Apr/2023 02:37:23] "POST /api/v1/encoded HTTP/1.1" 200 -
+2023-04-24 02:37:38,022 INFO 127.0.0.1 - - [24/Apr/2023 02:37:38] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
