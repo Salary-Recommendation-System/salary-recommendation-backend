@@ -13,15 +13,15 @@ import threading
 import pandas as pd
 
 
-def save_in_different_thread(db_session, recommendation_user):
+def save_in_different_thread(recommendation_user):
     recommendation_writer_repository = RecommendationWriterRepository()
-    return recommendation_writer_repository.save(db_session, recommendation_user)
+    return recommendation_writer_repository.save(recommendation_user)
 
 
-def content_based_filtering(db_session, saved_information, work_experience, education, designation, no_of_employees,
+def content_based_filtering(saved_information, work_experience, education, designation, no_of_employees,
                             amount, n=10):
     try:
-        data = saved_information.get_all_saved_information(db_session, work_experience, education, designation,
+        data = saved_information.get_all_saved_information(work_experience, education, designation,
                                                            no_of_employees, None)
 
         data = data.drop(['created_date_time'], axis=1)

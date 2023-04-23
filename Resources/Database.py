@@ -1,79 +1,25 @@
 import psycopg2
-from sqlalchemy.ext.declarative import declarative_base
-from datetime import datetime
-from sqlalchemy import create_engine, Column, Integer, Float, DateTime, String, Numeric
-
-from Domain.VO.DbConnection import DBConnection
 from Resources.Config import Config
-from Resources.connect_unix import get_connect_url
-
-Base = declarative_base()
+import psycopg2.pool
 
 
-class EncodedSalary(Base):
-    __tablename__ = 'encoded_salary'
-    __table_args__ = {'schema': 'recommendation'}
+class Database:
+    def __init__(self):
+        self.pool = psycopg2.pool.SimpleConnectionPool(
+            minconn=1,
+            maxconn=18,
+            database=Config.get('name'),
+            user=Config.get('user'),
+            password=Config.get('password'),
+            host=Config.get('host')
+        )
 
-    id = Column(Integer, primary_key=True)
-    education_level = Column(Integer)
-    work_experience = Column(Integer)
-    designation = Column(Integer)
-    salary_amount = Column(Float)
-    created_date_time = Column(DateTime, default=datetime.utcnow)
-    no_of_employees = Column(Integer)
+    def __enter__(self):
+        self.conn = self.pool.getconn()
+        self.cursor = self.conn.cursor()
+        return self
 
-
-class RecommendationDetail(Base):
-    __tablename__ = 'recommendation_details'
-    __table_args__ = {'schema': 'recommendation'}
-
-    id = Column(Integer, primary_key=True)
-    education_level = Column(String(255))
-    work_experience = Column(String(255))
-    designation = Column(String(255))
-    created_date_time = Column(DateTime, default=datetime.utcnow)
-    salary_amount = Column(Numeric)
-    no_of_employees = Column(String(255))
-    user_rating = Column(Float)
-    batch_id = Column(String)
-
-
-class SalaryDetail(Base):
-    __tablename__ = 'salary_details'
-    __table_args__ = {'schema': 'recommendation'}
-
-    id = Column(Integer, primary_key=True)
-    education_level = Column(String(255))
-    work_experience = Column(String(255))
-    designation = Column(String(255))
-    created_date_time = Column(DateTime, default=datetime.utcnow)
-    salary_amount = Column(Numeric)
-    no_of_employees = Column(String(255))
-    primary_technology = Column(String(255))
-    user_rating = Column(Float)
-    year_of_payment = Column(Integer)
-
-
-class EncodedSalaryConversion(Base):
-    __tablename__ = 'encoded_salary_conversion'
-    __table_args__ = {'schema': 'recommendation'}
-
-    id = Column(Integer, primary_key=True)
-    encoded_value = Column(Integer)
-    unique_code = Column(String)
-
-
-def db_engine_connection():
-    build_uri = get_connect_url()
-    print(build_uri)
-    engine = create_engine(build_uri, pool_pre_ping=True)
-    Base.metadata.create_all(engine)
-    return engine
-
-
-def db_connection():
-    config = Config()
-    conn = psycopg2.connect(database=config.get('name'), user=config.get('user'), password=config.get('password'),
-                            host=config.get('host'))
-    cursor = conn.cursor()
-    return DBConnection(conn, cursor)
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.conn.commit()
+        self.cursor.close()
+        self.pool.putconn(self.conn)
