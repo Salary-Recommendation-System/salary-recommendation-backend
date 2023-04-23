@@ -18,10 +18,10 @@ def save_in_different_thread(db_session, recommendation_user):
     return recommendation_writer_repository.save(db_session, recommendation_user)
 
 
-def content_based_filtering(db_session,saved_information, work_experience, education, designation, no_of_employees,
+def content_based_filtering(db_session, saved_information, work_experience, education, designation, no_of_employees,
                             amount, n=10):
     try:
-        data = saved_information.get_all_saved_information(db_session,work_experience, education, designation,
+        data = saved_information.get_all_saved_information(db_session, work_experience, education, designation,
                                                            no_of_employees, None)
 
         data = data.drop(['created_date_time'], axis=1)
@@ -51,7 +51,7 @@ class GetRecommendationServiceImpl(GetRecommendationService):
         recommendation = {}
         try:
 
-            with open('Utils/Files/salary_recommendation.pkl', 'rb') as file:
+            with open('Utils/Files/salary_recommendation_system_model.pkl', 'rb') as file:
                 saved_model = pickle.load(file)
         except Exception as e:
             print(e)
@@ -75,7 +75,8 @@ class GetRecommendationServiceImpl(GetRecommendationService):
                 print(user_inputs)
                 prediction = saved_model.predict(user_inputs)
                 if len(prediction) != 0:
-                    dataframe = content_based_filtering(db_session,saved_information, recommendation_user.get_work_experience(),
+                    dataframe = content_based_filtering(db_session, saved_information,
+                                                        recommendation_user.get_work_experience(),
                                                         recommendation_user.get_education_level(),
                                                         recommendation_user.get_designation(),
                                                         recommendation_user.get_no_of_employees(), prediction[0], 5)
@@ -91,7 +92,7 @@ class GetRecommendationServiceImpl(GetRecommendationService):
                     recommendation['model_filtering'] = predicted_information.to_dict(orient='records')
 
                 else:
-                    dataframe = content_based_filtering(db_session,saved_information,
+                    dataframe = content_based_filtering(db_session, saved_information,
                                                         recommendation_user.get_work_experience(),
                                                         recommendation_user.get_education_level(),
                                                         recommendation_user.get_designation(),
@@ -101,7 +102,7 @@ class GetRecommendationServiceImpl(GetRecommendationService):
             except Exception as e:
                 print(e)
                 print("Model access failure, due to lack of information", e)
-                dataframe = content_based_filtering(db_session,saved_information,
+                dataframe = content_based_filtering(db_session, saved_information,
                                                     recommendation_user.get_work_experience(),
                                                     recommendation_user.get_education_level(),
                                                     recommendation_user.get_designation(),
@@ -109,7 +110,8 @@ class GetRecommendationServiceImpl(GetRecommendationService):
                 recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
                 recommendation['model_filtering'] = []
         else:
-            dataframe = content_based_filtering(db_session,saved_information, recommendation_user.get_work_experience(),
+            dataframe = content_based_filtering(db_session, saved_information,
+                                                recommendation_user.get_work_experience(),
                                                 recommendation_user.get_education_level(),
                                                 recommendation_user.get_designation(),
                                                 recommendation_user.get_no_of_employees(), None, 5)

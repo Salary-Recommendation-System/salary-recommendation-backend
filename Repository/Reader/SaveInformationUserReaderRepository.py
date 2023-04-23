@@ -1,12 +1,9 @@
 from sqlalchemy.exc import SQLAlchemyError
 
 from Repository.SaveInformationUserRepository import SaveInformationUserRepository
-from Resources.Database import SalaryDetail, create_database_engine
-from Utils.Message import Message
+from Resources.Database import SalaryDetail
 from Utils.Response import Response
 import pandas as pd
-
-engine = create_database_engine()
 
 
 class SaveInformationUserReaderRepository(SaveInformationUserRepository):
@@ -22,24 +19,22 @@ class SaveInformationUserReaderRepository(SaveInformationUserRepository):
                         SalaryDetail.no_of_employees == str(no_of_employees)
 
                     ]
-                    result = engine.connect().execute(db_session.query(SalaryDetail).filter(*filters).statement)
+                    result = db_session.query(SalaryDetail).filter(*filters).all()
 
                     # Convert the result to a Pandas DataFrame
-                    dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
-
-                    # Close the engine
-                    engine.dispose()
+                    dataframe = pd.DataFrame([(r.id,r.education_level, r.work_experience, r.designation, r.salary_amount,
+                                               r.created_date_time, r.no_of_employees, r.primary_technology,
+                                               r.user_rating, r.year_of_payment) for r in result],
+                                             columns=["id","education_level", "work_experience", "designation",
+                                                      "salary_amount", "created_date_time", "no_of_employees",
+                                                      "primary_technology", "user_rating", "year_of_payment"])
 
                     # Return the DataFrame
                     return dataframe
                 except Exception as e:
-                    result = engine.connect().execute(db_session.query(SalaryDetail).filter
-                                                      (SalaryDetail.designation == str(designation)).statement)
-                    # Convert the result to a Pandas DataFrame
-                    dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
-
-                    # Close the engine
-                    engine.dispose()
+                    result = db_session.query(SalaryDetail).filter(SalaryDetail.designation == str(designation)).all()
+                    dataframe = pd.DataFrame([r.__dict__ for r in result])
+                    dataframe = dataframe.drop('_sa_instance_state', axis=1)
                     return dataframe
 
             else:
@@ -53,22 +48,18 @@ class SaveInformationUserReaderRepository(SaveInformationUserRepository):
                         SalaryDetail.salary_amount == float(amount)
                     ]
 
-                    result = engine.connect().execute(db_session.query(SalaryDetail).filter(*filters).statement)
+                    result = db_session.query(SalaryDetail).filter(*filters).all()
 
                     # Convert the result to a Pandas DataFrame
-                    dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
+                    dataframe = pd.DataFrame([row.__dict__ for row in result])
 
-                    # Close the engine
-                    engine.dispose()
+                    # Remove the ORM objects from the DataFrame
+                    dataframe = dataframe.drop('_sa_instance_state', axis=1)
                     return dataframe
                 except Exception as e:
-                    result = engine.connect().execute(db_session.query(SalaryDetail).filter
-                                                      (SalaryDetail.designation == str(designation)).statement)
-                    # Convert the result to a Pandas DataFrame
-                    dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
-
-                    # Close the engine
-                    engine.dispose()
+                    result = db_session.query(SalaryDetail).filter(SalaryDetail.designation == str(designation)).all()
+                    dataframe = pd.DataFrame([r.__dict__ for r in result])
+                    dataframe = dataframe.drop('_sa_instance_state', axis=1)
                     return dataframe
 
         except SQLAlchemyError as e:

@@ -1,16 +1,21 @@
+import os
+
 import jsons
 from flask import Flask, jsonify, request
 
 from Domain.InformationUser import InformationUser
 from Domain.RecommendationUser import RecommendationUser
-from Resources.Database import db_connection
+from Resources.Database import db_engine_connection
 from ServiceImplementation.EncodedSalaryServiceImpl import EncodedSalaryServiceImpl
 from ServiceImplementation.GetRecommendationServiceImpl import GetRecommendationServiceImpl
 from ServiceImplementation.SaveSalaryInformationServiceImpl import SaveSalaryInformationServiceImpl
 from datetime import datetime
+from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
-db_session = db_connection(app)
+
+engine = db_engine_connection()
+Session = sessionmaker(bind=engine)
 
 
 @app.route("/")
@@ -20,6 +25,7 @@ def load():
 
 @app.route('/api/v1/save_info', methods=['POST'])
 def save_salary_information_api():
+    db_session = Session()
     # Accessing the json request
     data = request.get_json()
     save_existing_data = request.args.get('saved_existing_data')
@@ -54,6 +60,7 @@ def save_salary_information_api():
 
 @app.route('/api/v1/get_recommendation', methods=['POST'])
 def get_recommendation():
+    db_session = Session()
     data = request.get_json()
 
     education_level = data['_education_level']
@@ -64,13 +71,14 @@ def get_recommendation():
     recommendation_system = RecommendationUser(education_level, work_experience, designation, datetime.now(), 0.0,
                                                no_of_employees, "")
     get_recommendation_result = GetRecommendationServiceImpl()
-    created_response = get_recommendation_result.save(db_session,recommendation_system)
+    created_response = get_recommendation_result.save(db_session, recommendation_system)
     response = jsons.dump(created_response)
     return jsonify(response), 200
 
 
 @app.route('/api/v1/rating/<id>', methods=['PUT'])
 def update_rating(id):
+    db_session = Session()
     rating = request.args.get('rating')
     service = SaveSalaryInformationServiceImpl()
     created_response = service.update_rating(db_session, int(rating), int(id))
@@ -81,6 +89,7 @@ def update_rating(id):
 
 @app.route('/api/v1/encoded', methods=['POST'])
 def save_encoded_salary():
+    db_session = Session()
     encode_specific = request.args.get('encode_specific')
     save = EncodedSalaryServiceImpl()
     if encode_specific == 'YES':
@@ -93,4 +102,4 @@ def save_encoded_salary():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

@@ -1,7 +1,7 @@
 from sqlalchemy.exc import SQLAlchemyError
 
 from Repository.EncodedSalaryRepository import EncodedSalaryRepository
-from Resources.Database import db_connection, EncodedSalaryConversion
+from Resources.Database import EncodedSalaryConversion
 from Utils.Message import Message
 from Utils.Response import Response
 import psycopg2.errors
