@@ -1,8 +1,10 @@
+import psycopg2
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from sqlalchemy import create_engine, Column, Integer, Float, DateTime, String, Numeric
 
-
+from Domain.VO.DbConnection import DBConnection
+from Resources.Config import Config
 from Resources.connect_unix import get_connect_url
 
 Base = declarative_base()
@@ -67,3 +69,11 @@ def db_engine_connection():
     engine = create_engine(build_uri, pool_pre_ping=True)
     Base.metadata.create_all(engine)
     return engine
+
+
+def db_connection():
+    config = Config()
+    conn = psycopg2.connect(database=config.get('name'), user=config.get('user'), password=config.get('password'),
+                            host=config.get('host'))
+    cursor = conn.cursor()
+    return DBConnection(conn, cursor)

@@ -4,6 +4,9 @@ from abc import abstractmethod
 class RecommendationRepository:
 
     @abstractmethod
-    def save(self,db_session, recommendation_user):
+    def save(self, recommendation_user):
         pass
 
+    @abstractmethod
+    def create(self, schema_name):
+        pass

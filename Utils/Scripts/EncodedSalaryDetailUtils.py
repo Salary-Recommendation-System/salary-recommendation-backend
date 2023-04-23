@@ -29,3 +29,18 @@ def get_based_on_parameters(work_experience, education, company_size, designatio
     return "SELECT * FROM recommendation.encoded_salary_conversion WHERE unique_code in ('{}','{}','{}','{}')".format(
         work_experience, education, company_size, designation
     )
+
+
+def create(schema_name):
+    return f'''
+                    CREATE SCHEMA IF NOT EXISTS {schema_name};
+                    CREATE TABLE {schema_name}.Encoded_Salary (
+                        id SERIAL PRIMARY KEY,
+                        education_level INT,
+                        work_experience INT,
+                        designation INT,
+                        salary_amount FLOAT,
+                        created_date_time TIMESTAMP,
+                        no_of_employees INT
+                    );
+                '''

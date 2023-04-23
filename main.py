@@ -5,17 +5,12 @@ from flask import Flask, jsonify, request
 
 from Domain.InformationUser import InformationUser
 from Domain.RecommendationUser import RecommendationUser
-from Resources.Database import db_engine_connection
 from ServiceImplementation.EncodedSalaryServiceImpl import EncodedSalaryServiceImpl
 from ServiceImplementation.GetRecommendationServiceImpl import GetRecommendationServiceImpl
 from ServiceImplementation.SaveSalaryInformationServiceImpl import SaveSalaryInformationServiceImpl
 from datetime import datetime
-from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
-
-engine = db_engine_connection()
-Session = sessionmaker(bind=engine)
 
 
 @app.route("/")
@@ -25,14 +20,13 @@ def load():
 
 @app.route('/api/v1/save_info', methods=['POST'])
 def save_salary_information_api():
-    db_session = Session()
     # Accessing the json request
     data = request.get_json()
     save_existing_data = request.args.get('saved_existing_data')
 
     saving_data_obj = SaveSalaryInformationServiceImpl()
     if save_existing_data == 'TRUE':
-        created_response = saving_data_obj.save_existing_data(db_session)
+        created_response = saving_data_obj.save_existing_data()
         response = jsons.dump(created_response)
         return jsonify(response), 200
     else:
@@ -53,14 +47,13 @@ def save_salary_information_api():
                                            float(user_rating),
                                            int(year_payment), currency_type)
 
-        saved_response = saving_data_obj.save(db_session, information_user)
+        saved_response = saving_data_obj.save(information_user)
         response = jsons.dump(saved_response)
         return jsonify(response), 200
 
 
 @app.route('/api/v1/get_recommendation', methods=['POST'])
 def get_recommendation():
-    db_session = Session()
     data = request.get_json()
 
     education_level = data['_education_level']
@@ -71,17 +64,16 @@ def get_recommendation():
     recommendation_system = RecommendationUser(education_level, work_experience, designation, datetime.now(), 0.0,
                                                no_of_employees, "")
     get_recommendation_result = GetRecommendationServiceImpl()
-    created_response = get_recommendation_result.save(db_session, recommendation_system)
+    created_response = get_recommendation_result.save(recommendation_system)
     response = jsons.dump(created_response)
     return jsonify(response), 200
 
 
 @app.route('/api/v1/rating/<id>', methods=['PUT'])
 def update_rating(id):
-    db_session = Session()
     rating = request.args.get('rating')
     service = SaveSalaryInformationServiceImpl()
-    created_response = service.update_rating(db_session, int(rating), int(id))
+    created_response = service.update_rating( int(rating), int(id))
 
     response = jsons.dump(created_response)
     return jsonify(response), 200
@@ -89,16 +81,39 @@ def update_rating(id):
 
 @app.route('/api/v1/encoded', methods=['POST'])
 def save_encoded_salary():
-    db_session = Session()
     encode_specific = request.args.get('encode_specific')
     save = EncodedSalaryServiceImpl()
-    if encode_specific == 'YES':
-        created_response = save.save(db_session, True)
-    else:
-        created_response = save.save(db_session, False)
-
+    created_response = save.save(bool(encode_specific))
     response = jsons.dump(created_response)
     return jsonify(response), 200
+
+
+@app.route('/api/v1/create_table/<schema_name>', methods=['GET'])
+def create_table(schema_name):
+    # Getting the query parameter
+    information_provider = request.args.get('information_provider')
+    encode = request.args.get('encode_conversion')
+
+    if information_provider == 'YES':
+        create_table_for_save_salary_information = SaveSalaryInformationServiceImpl()
+        created_response = create_table_for_save_salary_information.create(schema_name)
+        response = jsons.dump(created_response)
+        return jsonify(response), 200
+    elif information_provider == 'NO':
+        create_table_for_recommendation_user = GetRecommendationServiceImpl()
+        created_response = create_table_for_recommendation_user.create(schema_name)
+        response = jsons.dump(created_response)
+        return jsonify(response), 200
+    elif information_provider == 'ENCODE_DATA':
+        create_table_for_encode_details = EncodedSalaryServiceImpl()
+
+        if bool(encode):
+            created_response = create_table_for_encode_details.create(schema_name, True)
+        else:
+            created_response = create_table_for_encode_details.create(schema_name, False)
+
+        response = jsons.dump(created_response)
+        return jsonify(response), 200
 
 
 if __name__ == '__main__':

@@ -4,5 +4,9 @@ from abc import abstractmethod
 class GetRecommendationService:
 
     @abstractmethod
-    def save(self,db_session, recommendation_user):
+    def create(self, schema_name):
+        pass
+
+    @abstractmethod
+    def save(self, recommendation_user):
         pass

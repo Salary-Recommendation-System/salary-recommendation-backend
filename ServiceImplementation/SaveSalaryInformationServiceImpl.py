@@ -1,4 +1,3 @@
-from Domain.VO.RatingParameterVo import RatingParameterVo
 from Repository.writer.SaveInformationUserWriterRepository import SaveInformationUserWriterRepository
 from Service.SaveSalaryInformationService import SaveSalaryInformationService
 import logging
@@ -34,7 +33,7 @@ class SaveSalaryInformationServiceImpl(SaveSalaryInformationService):
     logging.basicConfig(filename='SaveSalaryInformationServiceImpl.log', level=logging.INFO,
                         format='%(asctime)s %(levelname)s %(message)s')
 
-    def save(self,db_session, information_user):
+    def save(self, information_user):
 
         logging.info("SaveSalaryInformationServiceImpl: save salary information")
         if information_user.get_salary_amount() is None:
@@ -48,21 +47,25 @@ class SaveSalaryInformationServiceImpl(SaveSalaryInformationService):
                                                               float(information_user.get_salary_amount())))
 
             saving_information = SaveInformationUserWriterRepository()
-            saving_information.save(db_session,information_user)
+            saving_information.save(information_user)
             logging.info("SaveSalaryInformationServiceImpl: Successfully saved the information's provided")
             return Response(Message.SUCCESS_MESSAGE.value, Message.SUCCESS_MESSAGE.message)
 
-    def save_existing_data(self,db_session):
+    def save_existing_data(self):
         try:
 
             save_information = SaveInformationUserWriterRepository()
             data = pd.read_csv("Utils/Files/unique_salary.csv")
-            return save_information.save_from_excel(db_session,data)
+            return save_information.save_from_excel(data)
 
         except Exception as e:
             print(e)
             return Response(Message.UNIQUE_SALARY_FILE_NOT_FOUND.value, Message.UNIQUE_SALARY_FILE_NOT_FOUND.message)
 
-    def update_rating(self,db_session, rating, id):
+    def update_rating(self, rating, id):
         save_information = SaveInformationUserWriterRepository()
-        return save_information.update_rating(db_session,rating, id)
+        return save_information.update_rating(rating, id)
+
+    def create(self, schema_name):
+        writer_repository = SaveInformationUserWriterRepository()
+        return writer_repository.create(schema_name)
