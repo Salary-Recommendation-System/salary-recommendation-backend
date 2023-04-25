@@ -34,3 +34,6 @@ class Message(Enum):
     ENCODED_FILE_NOT_AVAILABLE = ("Encoded file not available", 404)
     UNIQUE_SALARY_FILE_NOT_FOUND = ("Salary file not available", 404)
     INDEX_ACCESS_FAILURE = ("The access of index is failed please check the DB return", 404)
+    BEST_MATCH_NO_FOUND = ("Based on the inputs you passed there were no best match, hence sending "
+                           "based on the designation selected", 200)
+    BEST_MATCH_FOUND = ("Found the best match",200)

@@ -65,6 +65,7 @@ def get_recommendation():
                                                no_of_employees, "")
     get_recommendation_result = GetRecommendationServiceImpl()
     created_response = get_recommendation_result.save(db.session, recommendation_system)
+    print(created_response)
     response = jsons.dump(created_response)
     return jsonify(response), 200
 

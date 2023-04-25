@@ -560,3 +560,368 @@ AttributeError: db_session
 2023-04-24 02:37:17,223 INFO 127.0.0.1 - - [24/Apr/2023 02:37:17] "POST /api/v1/encoded?encode_specific=YES HTTP/1.1" 200 -
 2023-04-24 02:37:23,924 INFO 127.0.0.1 - - [24/Apr/2023 02:37:23] "POST /api/v1/encoded HTTP/1.1" 200 -
 2023-04-24 02:37:38,022 INFO 127.0.0.1 - - [24/Apr/2023 02:37:38] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 04:47:59,880 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 04:47:59,881 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 05:13:15,000 INFO 127.0.0.1 - - [24/Apr/2023 05:13:14] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 05:13:16,434 INFO 127.0.0.1 - - [24/Apr/2023 05:13:16] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 05:19:37,950 INFO 127.0.0.1 - - [24/Apr/2023 05:19:37] "[33mPOST /get-bird-image HTTP/1.1[0m" 404 -
+2023-04-24 05:20:05,160 INFO 127.0.0.1 - - [24/Apr/2023 05:20:05] "[33mGET / HTTP/1.1[0m" 404 -
+2023-04-24 05:57:49,568 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 05:57:49,569 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 06:07:58,336 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 06:07:58,337 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 06:25:24,446 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 06:25:24,446 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 06:25:53,323 INFO 127.0.0.1 - - [24/Apr/2023 06:25:53] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 06:26:02,150 INFO 127.0.0.1 - - [24/Apr/2023 06:26:02] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 06:26:02,644 INFO 127.0.0.1 - - [24/Apr/2023 06:26:02] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 16:02:00,356 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 16:02:00,356 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 16:02:29,231 INFO 127.0.0.1 - - [24/Apr/2023 16:02:29] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 16:02:29,583 INFO 127.0.0.1 - - [24/Apr/2023 16:02:29] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 16:03:44,800 INFO 127.0.0.1 - - [24/Apr/2023 16:03:44] "OPTIONS /api/v1/rating/52?rating=4 HTTP/1.1" 200 -
+2023-04-24 16:03:44,816 INFO 127.0.0.1 - - [24/Apr/2023 16:03:44] "PUT /api/v1/rating/52?rating=4 HTTP/1.1" 200 -
+2023-04-24 16:14:15,797 INFO 127.0.0.1 - - [24/Apr/2023 16:14:15] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 16:14:15,943 INFO 127.0.0.1 - - [24/Apr/2023 16:14:15] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 16:24:15,865 INFO 127.0.0.1 - - [24/Apr/2023 16:24:15] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 16:24:16,015 INFO 127.0.0.1 - - [24/Apr/2023 16:24:16] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 16:24:23,295 INFO 127.0.0.1 - - [24/Apr/2023 16:24:23] "OPTIONS /api/v1/rating/373?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:24:23,304 INFO 127.0.0.1 - - [24/Apr/2023 16:24:23] "PUT /api/v1/rating/373?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:24:43,061 INFO 127.0.0.1 - - [24/Apr/2023 16:24:43] "OPTIONS /api/v1/rating/373?rating=4 HTTP/1.1" 200 -
+2023-04-24 16:24:43,068 INFO 127.0.0.1 - - [24/Apr/2023 16:24:43] "PUT /api/v1/rating/373?rating=4 HTTP/1.1" 200 -
+2023-04-24 16:24:57,591 INFO 127.0.0.1 - - [24/Apr/2023 16:24:57] "OPTIONS /api/v1/rating/373?rating=1 HTTP/1.1" 200 -
+2023-04-24 16:24:57,599 INFO 127.0.0.1 - - [24/Apr/2023 16:24:57] "PUT /api/v1/rating/373?rating=1 HTTP/1.1" 200 -
+2023-04-24 16:26:25,296 INFO 127.0.0.1 - - [24/Apr/2023 16:26:25] "OPTIONS /api/v1/rating/2?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:26:25,308 INFO 127.0.0.1 - - [24/Apr/2023 16:26:25] "PUT /api/v1/rating/2?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:26:36,009 INFO 127.0.0.1 - - [24/Apr/2023 16:26:36] "OPTIONS /api/v1/rating/373?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:26:36,018 INFO 127.0.0.1 - - [24/Apr/2023 16:26:36] "PUT /api/v1/rating/373?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:27:23,888 INFO 127.0.0.1 - - [24/Apr/2023 16:27:23] "OPTIONS /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1" 200 -
+2023-04-24 16:27:23,896 INFO SaveSalaryInformationServiceImpl: save salary information
+2023-04-24 16:27:23,904 INFO SaveSalaryInformationServiceImpl: Successfully saved the information's provided
+2023-04-24 16:27:23,904 INFO 127.0.0.1 - - [24/Apr/2023 16:27:23] "POST /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1" 200 -
+2023-04-24 16:31:06,754 INFO 127.0.0.1 - - [24/Apr/2023 16:31:06] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 16:31:07,005 INFO 127.0.0.1 - - [24/Apr/2023 16:31:07] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 16:31:16,076 INFO 127.0.0.1 - - [24/Apr/2023 16:31:16] "OPTIONS /api/v1/rating/265?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:31:16,083 INFO 127.0.0.1 - - [24/Apr/2023 16:31:16] "PUT /api/v1/rating/265?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:33:05,444 INFO 127.0.0.1 - - [24/Apr/2023 16:33:05] "OPTIONS /api/v1/rating/265?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:33:05,453 INFO 127.0.0.1 - - [24/Apr/2023 16:33:05] "PUT /api/v1/rating/265?rating=3 HTTP/1.1" 200 -
+2023-04-24 16:37:30,521 INFO 127.0.0.1 - - [24/Apr/2023 16:37:30] "OPTIONS /api/v1/rating/265?rating=4 HTTP/1.1" 200 -
+2023-04-24 16:37:30,533 INFO 127.0.0.1 - - [24/Apr/2023 16:37:30] "PUT /api/v1/rating/265?rating=4 HTTP/1.1" 200 -
+2023-04-24 16:59:48,937 INFO 127.0.0.1 - - [24/Apr/2023 16:59:48] "OPTIONS /api/v1/rating/2?rating=5 HTTP/1.1" 200 -
+2023-04-24 16:59:48,947 INFO 127.0.0.1 - - [24/Apr/2023 16:59:48] "PUT /api/v1/rating/2?rating=5 HTTP/1.1" 200 -
+2023-04-24 17:13:24,479 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 17:13:24,479 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 17:14:21,626 INFO 127.0.0.1 - - [24/Apr/2023 17:14:21] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 17:14:21,903 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 90, in save
+    recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
+AttributeError: 'NoneType' object has no attribute 'to_dict'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 67, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 109, in save
+    recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
+AttributeError: 'NoneType' object has no attribute 'to_dict'
+2023-04-24 17:14:21,916 INFO 127.0.0.1 - - [24/Apr/2023 17:14:21] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-04-24 17:14:32,306 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 17:14:32,306 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 17:14:43,170 INFO 127.0.0.1 - - [24/Apr/2023 17:14:43] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 17:14:43,435 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 90, in save
+    recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
+AttributeError: 'NoneType' object has no attribute 'to_dict'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 67, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 109, in save
+    recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
+AttributeError: 'NoneType' object has no attribute 'to_dict'
+2023-04-24 17:14:43,437 INFO 127.0.0.1 - - [24/Apr/2023 17:14:43] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-04-24 17:15:07,139 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 17:15:07,139 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 17:15:16,463 INFO 127.0.0.1 - - [24/Apr/2023 17:15:16] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 17:25:05,749 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 17:25:05,749 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 17:26:04,348 INFO 127.0.0.1 - - [24/Apr/2023 17:26:04] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 17:26:04,617 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 94, in save
+    if len(dataframe) > 0:
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 67, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 123, in save
+    if len(dataframe) > 0:
+TypeError: object of type 'NoneType' has no len()
+2023-04-24 17:26:04,619 INFO 127.0.0.1 - - [24/Apr/2023 17:26:04] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-04-24 17:28:29,253 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 17:28:29,253 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 17:28:41,460 INFO 127.0.0.1 - - [24/Apr/2023 17:28:41] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 17:28:41,732 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 94, in save
+    if dataframe.empty:
+AttributeError: 'NoneType' object has no attribute 'empty'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 67, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 124, in save
+    if dataframe.empty:
+AttributeError: 'NoneType' object has no attribute 'empty'
+2023-04-24 17:28:41,735 INFO 127.0.0.1 - - [24/Apr/2023 17:28:41] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-04-24 17:29:50,383 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 17:29:50,383 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 17:30:05,795 INFO 127.0.0.1 - - [24/Apr/2023 17:30:05] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 17:30:06,038 INFO 127.0.0.1 - - [24/Apr/2023 17:30:06] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 17:30:46,396 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 17:30:46,396 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 17:31:13,234 INFO 127.0.0.1 - - [24/Apr/2023 17:31:13] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 17:37:07,967 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-24 17:37:07,967 INFO [33mPress CTRL+C to quit[0m
+2023-04-24 17:37:43,504 INFO 127.0.0.1 - - [24/Apr/2023 17:37:43] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-24 17:38:42,833 INFO 127.0.0.1 - - [24/Apr/2023 17:38:42] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 15:18:15,334 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 15:18:15,334 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 15:18:21,467 INFO 127.0.0.1 - - [25/Apr/2023 15:18:21] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 15:18:22,011 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 80, in save
+    dataframe, message = content_based_filtering(db_session, saved_information,
+ValueError: too many values to unpack (expected 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 67, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 122, in save
+    dataframe, message = content_based_filtering(db_session, saved_information,
+ValueError: too many values to unpack (expected 2)
+2023-04-25 15:18:22,013 INFO 127.0.0.1 - - [25/Apr/2023 15:18:22] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-04-25 15:20:05,731 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 15:20:05,731 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 15:20:18,861 INFO 127.0.0.1 - - [25/Apr/2023 15:20:18] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 15:20:19,170 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 80, in save
+    dataframe, message = content_based_filtering(db_session, saved_information,
+ValueError: too many values to unpack (expected 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 67, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 122, in save
+    dataframe, message = content_based_filtering(db_session, saved_information,
+ValueError: too many values to unpack (expected 2)
+2023-04-25 15:20:19,172 INFO 127.0.0.1 - - [25/Apr/2023 15:20:19] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-04-25 15:20:37,136 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 15:20:37,136 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 15:20:43,424 INFO 127.0.0.1 - - [25/Apr/2023 15:20:43] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 15:24:44,700 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 15:24:44,700 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 15:24:54,890 INFO 127.0.0.1 - - [25/Apr/2023 15:24:54] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 15:26:37,587 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 80, in save
+    dataframe, message = content_based_filtering(db_session, saved_information,
+ValueError: too many values to unpack (expected 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 67, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 122, in save
+    dataframe, message = content_based_filtering(db_session, saved_information,
+ValueError: too many values to unpack (expected 2)
+2023-04-25 15:26:39,536 INFO 127.0.0.1 - - [25/Apr/2023 15:26:39] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-04-25 15:27:09,463 INFO 127.0.0.1 - - [25/Apr/2023 15:27:09] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 15:29:56,367 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 15:29:56,367 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 15:30:13,183 INFO 127.0.0.1 - - [25/Apr/2023 15:30:13] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 15:30:13,492 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 80, in save
+    dataframe, message = content_based_filtering(db_session, saved_information,
+ValueError: too many values to unpack (expected 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 67, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 122, in save
+    dataframe, message = content_based_filtering(db_session, saved_information,
+ValueError: too many values to unpack (expected 2)
+2023-04-25 15:30:13,494 INFO 127.0.0.1 - - [25/Apr/2023 15:30:13] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-04-25 15:33:50,223 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 15:33:50,223 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 15:34:05,624 INFO 127.0.0.1 - - [25/Apr/2023 15:34:05] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 15:34:05,938 INFO 127.0.0.1 - - [25/Apr/2023 15:34:05] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:40:36,424 INFO 127.0.0.1 - - [25/Apr/2023 19:40:36] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:40:36,654 INFO 127.0.0.1 - - [25/Apr/2023 19:40:36] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:41:23,793 INFO 127.0.0.1 - - [25/Apr/2023 19:41:23] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:41:23,996 INFO 127.0.0.1 - - [25/Apr/2023 19:41:23] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:42:46,886 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 19:42:46,887 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 19:43:01,544 INFO 127.0.0.1 - - [25/Apr/2023 19:43:01] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:43:01,853 INFO 127.0.0.1 - - [25/Apr/2023 19:43:01] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:45:20,209 INFO 127.0.0.1 - - [25/Apr/2023 19:45:20] "POST /api/v1/encoded?encode_specific=TRUE HTTP/1.1" 200 -
+2023-04-25 19:45:57,986 INFO 127.0.0.1 - - [25/Apr/2023 19:45:57] "POST /api/v1/encoded HTTP/1.1" 200 -
+2023-04-25 19:46:39,265 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 19:46:39,265 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 19:47:12,599 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 19:47:12,599 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 19:47:34,139 INFO 127.0.0.1 - - [25/Apr/2023 19:47:34] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:51:58,051 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 19:51:58,051 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 19:52:38,740 INFO 127.0.0.1 - - [25/Apr/2023 19:52:38] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:57:11,051 INFO 127.0.0.1 - - [25/Apr/2023 19:57:11] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:58:05,684 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 19:58:05,684 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 19:58:27,312 INFO 127.0.0.1 - - [25/Apr/2023 19:58:27] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 19:58:27,579 INFO 127.0.0.1 - - [25/Apr/2023 19:58:27] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 20:02:09,388 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 20:02:09,389 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 20:02:41,382 INFO 127.0.0.1 - - [25/Apr/2023 20:02:41] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 22:08:42,255 INFO 127.0.0.1 - - [25/Apr/2023 22:08:42] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 22:14:19,482 INFO 127.0.0.1 - - [25/Apr/2023 22:14:19] "OPTIONS /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1" 200 -
+2023-04-25 22:14:19,488 INFO 127.0.0.1 - - [25/Apr/2023 22:14:19] "OPTIONS /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1" 200 -
+2023-04-25 22:14:19,493 ERROR Exception on /api/v1/save_info [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 46, in save_salary_information_api
+    float(salary_amount), no_of_employees, primary_technology,
+ValueError: could not convert string to float: ''
+2023-04-25 22:14:19,497 ERROR Exception on /api/v1/save_info [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 46, in save_salary_information_api
+    float(salary_amount), no_of_employees, primary_technology,
+ValueError: could not convert string to float: ''
+2023-04-25 22:14:19,523 INFO 127.0.0.1 - - [25/Apr/2023 22:14:19] "[35m[1mPOST /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1[0m" 500 -
+2023-04-25 22:14:19,525 INFO 127.0.0.1 - - [25/Apr/2023 22:14:19] "[35m[1mPOST /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1[0m" 500 -
+2023-04-25 22:16:03,454 INFO 127.0.0.1 - - [25/Apr/2023 22:16:03] "OPTIONS /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1" 200 -
+2023-04-25 22:16:03,465 INFO SaveSalaryInformationServiceImpl: save salary information
+2023-04-25 22:16:03,545 INFO SaveSalaryInformationServiceImpl: Successfully saved the information's provided
+2023-04-25 22:16:03,547 INFO 127.0.0.1 - - [25/Apr/2023 22:16:03] "POST /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1" 200 -

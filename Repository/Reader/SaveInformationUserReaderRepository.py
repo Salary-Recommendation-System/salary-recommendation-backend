@@ -1,3 +1,4 @@
+from sqlalchemy import desc
 from sqlalchemy.exc import SQLAlchemyError
 
 from Repository.SaveInformationUserRepository import SaveInformationUserRepository
@@ -22,23 +23,41 @@ class SaveInformationUserReaderRepository(SaveInformationUserRepository):
                         SalaryDetail.no_of_employees == str(no_of_employees)
 
                     ]
-                    result = engine.connect().execute(db_session.query(SalaryDetail).filter(*filters).statement)
+
+                    query = db_session.query(SalaryDetail).filter(*filters).order_by(desc(SalaryDetail.user_rating))
+
+                    result = engine.connect().execute(query.statement)
 
                     # Convert the result to a Pandas DataFrame
                     dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
 
-                    # Close the engine
+                    if dataframe.empty:
+                        query = db_session.query(SalaryDetail).filter(SalaryDetail.designation == str(designation))\
+                            .order_by(desc(SalaryDetail.user_rating))
+                        result = engine.connect().execute(query.statement)
+                        # Convert the result to a Pandas DataFrame
+                        dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
+                        engine.dispose()
+                        return dataframe
                     engine.dispose()
-
-                    # Return the DataFrame
                     return dataframe
                 except Exception as e:
-                    result = engine.connect().execute(db_session.query(SalaryDetail).filter
-                                                      (SalaryDetail.designation == str(designation)).statement)
+                    print(e)
+                    query = db_session.query(SalaryDetail).filter(SalaryDetail.designation == str(designation))\
+                        .order_by(desc(SalaryDetail.user_rating))
+                    result = engine.connect().execute(query.statement)
                     # Convert the result to a Pandas DataFrame
                     dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
 
-                    # Close the engine
+                    if dataframe.empty:
+                        query = db_session.query(SalaryDetail).filter(SalaryDetail.designation == str(designation))\
+                            .order_by(desc(SalaryDetail.user_rating))
+                        result = engine.connect().execute(query.statement)
+                        # Convert the result to a Pandas DataFrame
+                        dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
+                        engine.dispose()
+                        return dataframe
+                    # Return the DataFrame
                     engine.dispose()
                     return dataframe
 
@@ -52,22 +71,21 @@ class SaveInformationUserReaderRepository(SaveInformationUserRepository):
                         SalaryDetail.no_of_employees == str(no_of_employees),
                         SalaryDetail.salary_amount == float(amount)
                     ]
-
-                    result = engine.connect().execute(db_session.query(SalaryDetail).filter(*filters).statement)
+                    query = db_session.query(SalaryDetail).filter(*filters)\
+                        .order_by(desc(SalaryDetail.user_rating))
+                    result = engine.connect().execute(query.statement)
 
                     # Convert the result to a Pandas DataFrame
                     dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
-
-                    # Close the engine
                     engine.dispose()
                     return dataframe
                 except Exception as e:
-                    result = engine.connect().execute(db_session.query(SalaryDetail).filter
-                                                      (SalaryDetail.designation == str(designation)).statement)
+                    print(e)
+                    query = db_session.query(SalaryDetail).filter(SalaryDetail.designation == str(designation)) \
+                        .order_by(desc(SalaryDetail.user_rating))
+                    result = engine.connect().execute(query.statement)
                     # Convert the result to a Pandas DataFrame
                     dataframe = pd.DataFrame(result.fetchall(), columns=result.keys())
-
-                    # Close the engine
                     engine.dispose()
                     return dataframe
 

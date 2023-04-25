@@ -1,6 +1,6 @@
 database:
-  host: 34.123.124.11
+  host: localhost
   port: 5432
-  name: Salary-recommendation
+  name: User_Recommendation_Details
   user: postgres
-  password: suhafazal7
+  password: 1234

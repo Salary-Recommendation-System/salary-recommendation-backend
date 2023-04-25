@@ -18,28 +18,31 @@ def save_in_different_thread(db_session, recommendation_user):
     return recommendation_writer_repository.save(db_session, recommendation_user)
 
 
-def content_based_filtering(db_session,saved_information, work_experience, education, designation, no_of_employees,
+def content_based_filtering(db_session, saved_information, work_experience, education, designation, no_of_employees,
                             amount, n=10):
     try:
-        data = saved_information.get_all_saved_information(db_session,work_experience, education, designation,
+        data = saved_information.get_all_saved_information(db_session, work_experience, education, designation,
                                                            no_of_employees, None)
 
-        data = data.drop(['created_date_time'], axis=1)
-        data['text_features'] = data['work_experience'] + ' ' + data['education_level'] + ' ' + data[
-            'no_of_employees'] + ' ' + data['designation']
-        vectorized = TfidfVectorizer()
-        tfidf_matrix = vectorized.fit_transform(data['text_features'])
-        input_vec = tfidf_matrix[data.index[0]]
-        sim_scores = cosine_similarity(input_vec, tfidf_matrix)[0]
-        sim_indices = sim_scores.argsort()[::-1][1:n + 1]
-        similar_data = data.iloc[sim_indices][['id', 'work_experience', 'education_level', 'no_of_employees',
-                                               'designation', 'salary_amount', 'user_rating', 'year_of_payment',
-                                               'primary_technology']]
-        if amount is not None:
-            similar_data = similar_data[similar_data['salary_amount'] != int(amount)]
-            return similar_data
+        if len(data) != 0:
+            data = data.drop(['created_date_time'], axis=1)
+            data['text_features'] = data['work_experience'] + ' ' + data['education_level'] + ' ' + data[
+                'no_of_employees'] + ' ' + data['designation']
+            vectorized = TfidfVectorizer()
+            tfidf_matrix = vectorized.fit_transform(data['text_features'])
+            input_vec = tfidf_matrix[data.index[0]]
+            sim_scores = cosine_similarity(input_vec, tfidf_matrix)[0]
+            sim_indices = sim_scores.argsort()[::-1][1:n + 1]
+            similar_data = data.iloc[sim_indices][['id', 'work_experience', 'education_level', 'no_of_employees',
+                                                   'designation', 'salary_amount', 'user_rating', 'year_of_payment',
+                                                   'primary_technology']]
+            if amount is not None:
+                similar_data = similar_data[similar_data['salary_amount'] != int(amount)]
+                return similar_data
+            else:
+                return similar_data
         else:
-            return similar_data
+            return []
     except Exception as e:
         print(e)
 
@@ -72,13 +75,14 @@ class GetRecommendationServiceImpl(GetRecommendationService):
                     'Company size': [encoded_service_impl[2].encoded_value],
                     'Designation': [encoded_service_impl[3].encoded_value]
                 })
-                print(user_inputs)
                 prediction = saved_model.predict(user_inputs)
                 if len(prediction) != 0:
-                    dataframe = content_based_filtering(db_session,saved_information, recommendation_user.get_work_experience(),
+                    dataframe = content_based_filtering(db_session, saved_information,
+                                                        recommendation_user.get_work_experience(),
                                                         recommendation_user.get_education_level(),
                                                         recommendation_user.get_designation(),
-                                                        recommendation_user.get_no_of_employees(), prediction[0], 5)
+                                                        recommendation_user.get_no_of_employees(),
+                                                        prediction[0], 5)
 
                     predicted_information = saved_information.get_all_saved_information(
                         db_session,
@@ -87,37 +91,61 @@ class GetRecommendationServiceImpl(GetRecommendationService):
                         recommendation_user.get_designation(),
                         recommendation_user.get_no_of_employees(),
                         prediction[0])
-                    recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
-                    recommendation['model_filtering'] = predicted_information.to_dict(orient='records')
+
+                    if len(dataframe) == 0:
+                        recommendation['content_based_filtering'] = []
+                        recommendation['label_message'] = Message.BEST_MATCH_NO_FOUND
+                    else:
+                        recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
+
+                    if len(predicted_information) > 0:
+                        recommendation['model_filtering'] = predicted_information.to_dict(orient='records')
+                    else:
+                        recommendation['model_filtering'] = []
+                        recommendation['label_message'] = ""
 
                 else:
-                    dataframe = content_based_filtering(db_session,saved_information,
+                    dataframe = content_based_filtering(db_session, saved_information,
                                                         recommendation_user.get_work_experience(),
                                                         recommendation_user.get_education_level(),
                                                         recommendation_user.get_designation(),
                                                         recommendation_user.get_no_of_employees(), None, 5)
-                    recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
+                    if len(dataframe) == 0:
+                        recommendation['content_based_filtering'] = []
+                        recommendation['label_message'] = Message.BEST_MATCH_NO_FOUND
+                    else:
+                        recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
+
                     recommendation['model_filtering'] = []
             except Exception as e:
                 print(e)
                 print("Model access failure, due to lack of information", e)
-                dataframe = content_based_filtering(db_session,saved_information,
+                dataframe = content_based_filtering(db_session, saved_information,
                                                     recommendation_user.get_work_experience(),
                                                     recommendation_user.get_education_level(),
                                                     recommendation_user.get_designation(),
                                                     recommendation_user.get_no_of_employees(), None, 5)
-                recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
+                if len(dataframe) == 0:
+                    recommendation['content_based_filtering'] = []
+                    recommendation['label_message'] = Message.BEST_MATCH_NO_FOUND
+                else:
+                    recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
                 recommendation['model_filtering'] = []
         else:
-            dataframe = content_based_filtering(db_session,saved_information, recommendation_user.get_work_experience(),
-                                                recommendation_user.get_education_level(),
-                                                recommendation_user.get_designation(),
-                                                recommendation_user.get_no_of_employees(), None, 5)
-            recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
+            dataframe, message = content_based_filtering(db_session, saved_information,
+                                                         recommendation_user.get_work_experience(),
+                                                         recommendation_user.get_education_level(),
+                                                         recommendation_user.get_designation(),
+                                                         recommendation_user.get_no_of_employees(), None, 5)
+            if len(dataframe) == 0:
+                recommendation['content_based_filtering'] = []
+                recommendation['label_message'] = message
+            else:
+                recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
             recommendation['model_filtering'] = []
 
         recommendation_user.set_recommendation(recommendation)
-        thread = threading.Thread(target=save_in_different_thread, args=(db_session,recommendation_user,))
+        thread = threading.Thread(target=save_in_different_thread, args=(db_session, recommendation_user,))
         thread.start()
 
         return Response(Message.SUCCESS_MESSAGE.value, recommendation)
