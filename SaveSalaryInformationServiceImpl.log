@@ -925,3 +925,8 @@ ValueError: could not convert string to float: ''
 2023-04-25 22:16:03,465 INFO SaveSalaryInformationServiceImpl: save salary information
 2023-04-25 22:16:03,545 INFO SaveSalaryInformationServiceImpl: Successfully saved the information's provided
 2023-04-25 22:16:03,547 INFO 127.0.0.1 - - [25/Apr/2023 22:16:03] "POST /api/v1/save_info?saved_existing_data=FALSE HTTP/1.1" 200 -
+2023-04-25 22:16:25,103 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-25 22:16:25,103 INFO [33mPress CTRL+C to quit[0m
+2023-04-25 22:16:42,798 INFO 127.0.0.1 - - [25/Apr/2023 22:16:42] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-04-25 22:16:43,516 INFO 127.0.0.1 - - [25/Apr/2023 22:16:43] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
