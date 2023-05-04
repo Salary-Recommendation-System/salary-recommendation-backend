@@ -33,6 +33,7 @@ def content_based_filtering(db_session, saved_information, work_experience, educ
             input_vec = tfidf_matrix[data.index[0]]
             sim_scores = cosine_similarity(input_vec, tfidf_matrix)[0]
             sim_indices = sim_scores.argsort()[::-1][1:n + 1]
+
             similar_data = data.iloc[sim_indices][['id', 'work_experience', 'education_level', 'no_of_employees',
                                                    'designation', 'salary_amount', 'user_rating', 'year_of_payment',
                                                    'primary_technology']]
