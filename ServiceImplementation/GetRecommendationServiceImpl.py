@@ -7,6 +7,7 @@ from Repository.Reader.SaveInformationUserReaderRepository import SaveInformatio
 from Repository.writer.RecommendationWriterRepository import RecommendationWriterRepository
 from Service.GetRecommendationService import GetRecommendationService
 from ServiceImplementation.EncodedSalaryServiceImpl import EncodedSalaryServiceImpl
+from ServiceImplementation.InflationServiceImpl import InflationServiceImpl
 from Utils.Message import Message
 from Utils.Response import Response
 import threading
@@ -16,6 +17,19 @@ import pandas as pd
 def save_in_different_thread(db_session, recommendation_user):
     recommendation_writer_repository = RecommendationWriterRepository()
     return recommendation_writer_repository.save(db_session, recommendation_user)
+
+
+def add_inflation_details(salaries, db_session):
+    inflation = InflationServiceImpl()
+    rates = inflation.get_inflation(db_session)
+    if len(rates) != 0:
+        for salary in salaries:
+            rate = rates[0]
+            inflation_amount = float(salary['salary_amount']) * float(rate)
+            salary['inflation_rate'] = format((1 - rate) * 100, ".2f")
+            salary['inflation_amount'] = round(float(inflation_amount))
+        return salaries
+    return salaries
 
 
 def content_based_filtering(db_session, saved_information, work_experience, education, designation, no_of_employees,
@@ -133,20 +147,27 @@ class GetRecommendationServiceImpl(GetRecommendationService):
                     recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
                 recommendation['model_filtering'] = []
         else:
-            dataframe, message = content_based_filtering(db_session, saved_information,
-                                                         recommendation_user.get_work_experience(),
-                                                         recommendation_user.get_education_level(),
-                                                         recommendation_user.get_designation(),
-                                                         recommendation_user.get_no_of_employees(), None, 5)
+            dataframe = content_based_filtering(db_session, saved_information,
+                                                recommendation_user.get_work_experience(),
+                                                recommendation_user.get_education_level(),
+                                                recommendation_user.get_designation(),
+                                                recommendation_user.get_no_of_employees(), None, 5)
             if len(dataframe) == 0:
                 recommendation['content_based_filtering'] = []
-                recommendation['label_message'] = message
+                recommendation['label_message'] = Message.BEST_MATCH_NO_FOUND
             else:
                 recommendation['content_based_filtering'] = dataframe.to_dict(orient='records')
             recommendation['model_filtering'] = []
 
-        recommendation_user.set_recommendation(recommendation)
+        content_salary = add_inflation_details(recommendation['content_based_filtering'],db_session)
+        model_salary = add_inflation_details(recommendation['model_filtering'],db_session)
+
+        updated_recommendation = {'content_based_filtering': content_salary, 'model_filtering': model_salary}
+
+        recommendation_user.set_recommendation(updated_recommendation)
+        print(updated_recommendation)
+        # recommendation_user.set_inflation_rate(inflation_service.get_inflation(db_session))
         thread = threading.Thread(target=save_in_different_thread, args=(db_session, recommendation_user,))
         thread.start()
 
-        return Response(Message.SUCCESS_MESSAGE.value, recommendation)
+        return Response(Message.SUCCESS_MESSAGE.value, updated_recommendation)

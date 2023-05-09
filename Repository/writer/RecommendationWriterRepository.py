@@ -24,7 +24,9 @@ class RecommendationWriterRepository(RecommendationRepository):
                                                                       user_rating=item['user_rating'],
                                                                       no_of_employees=item['no_of_employees'],
                                                                       salary_amount=item['salary_amount'],
-                                                                      batch_id=uniqueid)
+                                                                      batch_id=uniqueid,
+                                                                      inflation_rate=item['inflation_rate'],
+                                                                      inflation_amount=item['inflation_amount'])
                         connection.execute(recommendation_details.__table__.insert(), recommendation_details.__dict__)
                 connection.commit()
             return Response(Message.SUCCESS_MESSAGE.value, Message.SUCCESS_MESSAGE.message)

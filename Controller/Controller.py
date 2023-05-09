@@ -1,11 +1,13 @@
 import jsons
 from flask import Flask, jsonify, request, Blueprint
 
+from Domain.InflationCal import InflationCal
 from Domain.InformationUser import InformationUser
 from Domain.RecommendationUser import RecommendationUser
 from Resources.Database import db
 from ServiceImplementation.EncodedSalaryServiceImpl import EncodedSalaryServiceImpl
 from ServiceImplementation.GetRecommendationServiceImpl import GetRecommendationServiceImpl
+from ServiceImplementation.InflationServiceImpl import InflationServiceImpl
 from ServiceImplementation.SaveSalaryInformationServiceImpl import SaveSalaryInformationServiceImpl
 from datetime import datetime
 
@@ -62,7 +64,7 @@ def get_recommendation():
     no_of_employees = data['_no_of_employees']
 
     recommendation_system = RecommendationUser(education_level, work_experience, designation, datetime.now(), 0.0,
-                                               no_of_employees, "")
+                                               no_of_employees, "","")
     get_recommendation_result = GetRecommendationServiceImpl()
     created_response = get_recommendation_result.save(db.session, recommendation_system)
     print(created_response)
@@ -90,4 +92,19 @@ def save_encoded_salary():
         created_response = save.save(db.session, False)
 
     response = jsons.dump(created_response)
+    return jsonify(response), 200
+
+
+@bp.route('/inflation', methods=['POST'])
+def inflation():
+
+    data = request.get_json()
+    month = data['month']
+    year = data['year']
+    rate = data['rate']
+    inflation_obj = InflationCal(year, month.upper(), rate)
+    service = InflationServiceImpl()
+    created_response = service.save(db.session,inflation_obj)
+    response = jsons.dump(created_response)
+
     return jsonify(response), 200

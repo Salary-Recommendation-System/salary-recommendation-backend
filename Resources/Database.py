@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy import create_engine
 
-
 db = SQLAlchemy()
 
 
@@ -33,6 +32,8 @@ class RecommendationDetail(db.Model):
     no_of_employees = db.Column(db.String(255))
     user_rating = db.Column(db.Float)
     batch_id = db.Column(db.String)
+    inflation_rate = db.Column(db.Float)
+    inflation_amount = db.Column(db.Float)
 
 
 class SalaryDetail(db.Model):
@@ -58,6 +59,16 @@ class EncodedSalaryConversion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     encoded_value = db.Column(db.Integer)
     unique_code = db.Column(db.String)
+
+
+class Inflation(db.Model):
+    __tablename__ = 'inflation'
+    __table_args__ = {'schema': 'recommendation'}
+
+    id = db.Column(db.Integer, primary_key=True)
+    year = db.Column(db.Integer)
+    month = db.Column(db.String)
+    rate = db.Column(db.FLOAT)
 
 
 def create_database_engine():

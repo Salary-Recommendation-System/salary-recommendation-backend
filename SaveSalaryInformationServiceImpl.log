@@ -1084,3 +1084,300 @@ TypeError: object of type 'NoneType' has no len()
 2023-04-30 19:39:58,829 INFO 127.0.0.1 - - [30/Apr/2023 19:39:58] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
 2023-04-30 19:42:17,808 INFO 127.0.0.1 - - [30/Apr/2023 19:42:17] "OPTIONS /api/v1/get_recommendation HTTP/1.1" 200 -
 2023-04-30 19:42:17,947 INFO 127.0.0.1 - - [30/Apr/2023 19:42:17] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-06 02:20:45,369 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-06 02:20:45,369 INFO [33mPress CTRL+C to quit[0m
+2023-05-06 02:21:05,944 INFO 127.0.0.1 - - [06/May/2023 02:21:05] "[31m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 400 -
+2023-05-06 02:21:21,232 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-06 02:21:21,232 INFO [33mPress CTRL+C to quit[0m
+2023-05-06 02:22:07,808 INFO 127.0.0.1 - - [06/May/2023 02:22:07] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-09 17:15:02,468 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:15:02,468 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:31:21,735 ERROR Exception on /api/v1/inflation [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask_cors\extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 110, in inflation
+    created_response = service.save(db.session,inflation_obj)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\InflationServiceImpl.py", line 19, in save
+    if not (inflation.get_month().capitalize() in calendar.month[1:]):
+TypeError: 'method' object is not subscriptable
+2023-05-09 17:31:21,775 INFO 127.0.0.1 - - [09/May/2023 17:31:21] "[35m[1mPOST /api/v1/inflation HTTP/1.1[0m" 500 -
+2023-05-09 17:31:45,007 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:31:45,007 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:32:28,891 ERROR Exception on /api/v1/inflation [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask_cors\extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 110, in inflation
+    created_response = service.save(db.session,inflation_obj)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\InflationServiceImpl.py", line 19, in save
+    if not (inflation.get_month().capitalize() in calendar.month[1:]):
+TypeError: 'method' object is not subscriptable
+2023-05-09 17:32:28,907 INFO 127.0.0.1 - - [09/May/2023 17:32:28] "[35m[1mPOST /api/v1/inflation HTTP/1.1[0m" 500 -
+2023-05-09 17:32:57,597 ERROR Exception on /api/v1/inflation [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask_cors\extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 110, in inflation
+    created_response = service.save(db.session,inflation_obj)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\InflationServiceImpl.py", line 19, in save
+    if not (inflation.get_month().capitalize() in calendar.month[1:]):
+TypeError: 'method' object is not subscriptable
+2023-05-09 17:32:57,599 INFO 127.0.0.1 - - [09/May/2023 17:32:57] "[35m[1mPOST /api/v1/inflation HTTP/1.1[0m" 500 -
+2023-05-09 17:33:30,685 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:33:30,685 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:34:04,364 INFO 127.0.0.1 - - [09/May/2023 17:34:04] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:35:52,450 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:35:52,450 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:36:34,466 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:36:34,482 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:36:56,231 INFO 127.0.0.1 - - [09/May/2023 17:36:56] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:37:11,987 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:37:11,987 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:37:16,660 INFO 127.0.0.1 - - [09/May/2023 17:37:16] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:39:58,531 INFO 127.0.0.1 - - [09/May/2023 17:39:58] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:40:19,512 INFO 127.0.0.1 - - [09/May/2023 17:40:19] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:40:29,429 INFO 127.0.0.1 - - [09/May/2023 17:40:29] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:40:37,983 INFO 127.0.0.1 - - [09/May/2023 17:40:37] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:41:05,199 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:41:05,199 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:41:39,670 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:41:39,670 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:43:01,823 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:43:01,823 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:43:39,583 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:43:39,583 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:45:36,145 INFO 127.0.0.1 - - [09/May/2023 17:45:36] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:45:54,295 INFO 127.0.0.1 - - [09/May/2023 17:45:54] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:46:04,055 INFO 127.0.0.1 - - [09/May/2023 17:46:04] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:46:15,951 INFO 127.0.0.1 - - [09/May/2023 17:46:15] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:46:32,670 INFO 127.0.0.1 - - [09/May/2023 17:46:32] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:46:42,711 INFO 127.0.0.1 - - [09/May/2023 17:46:42] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:46:56,807 INFO 127.0.0.1 - - [09/May/2023 17:46:56] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:47:20,059 INFO 127.0.0.1 - - [09/May/2023 17:47:20] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:47:26,423 INFO 127.0.0.1 - - [09/May/2023 17:47:26] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:47:34,709 INFO 127.0.0.1 - - [09/May/2023 17:47:34] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:49:02,792 INFO 127.0.0.1 - - [09/May/2023 17:49:02] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 17:49:02,792 INFO 127.0.0.1 - - [09/May/2023 17:49:02] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 17:49:34,361 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:49:34,361 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:49:41,434 INFO 127.0.0.1 - - [09/May/2023 17:49:41] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 17:49:41,442 INFO 127.0.0.1 - - [09/May/2023 17:49:41] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 17:50:51,877 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:50:51,877 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:50:54,314 INFO 127.0.0.1 - - [09/May/2023 17:50:54] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 17:50:54,314 INFO 127.0.0.1 - - [09/May/2023 17:50:54] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 17:50:57,722 INFO 127.0.0.1 - - [09/May/2023 17:50:57] "[31m[1mGET /api/v1/inflation HTTP/1.1[0m" 405 -
+2023-05-09 17:51:11,103 INFO 127.0.0.1 - - [09/May/2023 17:51:11] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:53:07,403 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:53:07,403 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:53:16,691 INFO 127.0.0.1 - - [09/May/2023 17:53:16] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:53:30,149 INFO 127.0.0.1 - - [09/May/2023 17:53:30] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:54:18,606 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:54:18,606 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 17:54:37,799 INFO 127.0.0.1 - - [09/May/2023 17:54:37] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:55:33,938 INFO 127.0.0.1 - - [09/May/2023 17:55:33] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:55:44,977 INFO 127.0.0.1 - - [09/May/2023 17:55:44] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:56:00,020 INFO 127.0.0.1 - - [09/May/2023 17:56:00] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:56:11,960 INFO 127.0.0.1 - - [09/May/2023 17:56:11] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:56:26,821 INFO 127.0.0.1 - - [09/May/2023 17:56:26] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:56:42,806 INFO 127.0.0.1 - - [09/May/2023 17:56:42] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:56:54,112 INFO 127.0.0.1 - - [09/May/2023 17:56:54] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:57:04,956 INFO 127.0.0.1 - - [09/May/2023 17:57:04] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:57:22,854 INFO 127.0.0.1 - - [09/May/2023 17:57:22] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 17:57:44,251 INFO 127.0.0.1 - - [09/May/2023 17:57:44] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 17:57:44,256 INFO 127.0.0.1 - - [09/May/2023 17:57:44] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 17:59:59,117 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 17:59:59,117 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:00:07,304 INFO 127.0.0.1 - - [09/May/2023 18:00:07] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 18:00:07,309 INFO 127.0.0.1 - - [09/May/2023 18:00:07] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 18:00:29,427 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:00:29,427 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:01:48,399 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:01:48,399 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:02:05,510 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:02:05,510 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:02:15,263 INFO 127.0.0.1 - - [09/May/2023 18:02:15] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 18:02:32,248 INFO 127.0.0.1 - - [09/May/2023 18:02:32] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 18:02:35,270 INFO 127.0.0.1 - - [09/May/2023 18:02:35] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 18:03:12,595 INFO 127.0.0.1 - - [09/May/2023 18:03:12] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 18:03:22,270 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:03:22,271 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:03:22,516 INFO 127.0.0.1 - - [09/May/2023 18:03:22] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 18:03:22,521 INFO 127.0.0.1 - - [09/May/2023 18:03:22] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 18:04:39,243 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:04:39,243 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:04:46,276 INFO 127.0.0.1 - - [09/May/2023 18:04:46] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 18:04:46,288 INFO 127.0.0.1 - - [09/May/2023 18:04:46] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 18:05:21,466 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:05:21,466 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:05:37,187 INFO 127.0.0.1 - - [09/May/2023 18:05:37] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 18:05:37,195 INFO 127.0.0.1 - - [09/May/2023 18:05:37] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 18:06:46,363 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:06:46,364 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:06:49,681 INFO 127.0.0.1 - - [09/May/2023 18:06:49] "[32mGET /api/v1 HTTP/1.1[0m" 308 -
+2023-05-09 18:06:49,691 INFO 127.0.0.1 - - [09/May/2023 18:06:49] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 18:07:13,627 INFO 127.0.0.1 - - [09/May/2023 18:07:13] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:07:28,897 INFO 127.0.0.1 - - [09/May/2023 18:07:28] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:07:42,046 INFO 127.0.0.1 - - [09/May/2023 18:07:42] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:07:55,156 INFO 127.0.0.1 - - [09/May/2023 18:07:55] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:08:08,833 INFO 127.0.0.1 - - [09/May/2023 18:08:08] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:08:21,503 INFO 127.0.0.1 - - [09/May/2023 18:08:21] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:08:32,589 INFO 127.0.0.1 - - [09/May/2023 18:08:32] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:08:42,396 INFO 127.0.0.1 - - [09/May/2023 18:08:42] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:08:55,437 INFO 127.0.0.1 - - [09/May/2023 18:08:55] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:09:06,688 INFO 127.0.0.1 - - [09/May/2023 18:09:06] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:09:18,393 INFO 127.0.0.1 - - [09/May/2023 18:09:18] "POST /api/v1/inflation HTTP/1.1" 200 -
+2023-05-09 18:09:38,924 INFO 127.0.0.1 - - [09/May/2023 18:09:38] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 18:13:07,109 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:13:07,109 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:13:14,536 INFO 127.0.0.1 - - [09/May/2023 18:13:14] "GET /api/v1/ HTTP/1.1" 200 -
+2023-05-09 18:35:48,197 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:35:48,197 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:36:11,271 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:36:11,271 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:36:23,338 INFO 127.0.0.1 - - [09/May/2023 18:36:23] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-09 18:59:31,308 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 18:59:31,308 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 18:59:52,602 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask_cors\extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 69, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 161, in save
+    content_salary = add_inflation_details(recommendation['content_based_filtering'],db_session)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 27, in add_inflation_details
+    inflation_amount = salary['salary_amount'] * rate
+TypeError: unsupported operand type(s) for *: 'decimal.Decimal' and 'float'
+2023-05-09 18:59:52,608 INFO 127.0.0.1 - - [09/May/2023 18:59:52] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-05-09 19:00:10,719 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:00:10,719 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:02:25,234 ERROR Exception on /api/v1/get_recommendation [POST]
+Traceback (most recent call last):
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask_cors\extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\shaza\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\Controller\Controller.py", line 69, in get_recommendation
+    created_response = get_recommendation_result.save(db.session, recommendation_system)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 161, in save
+    content_salary = add_inflation_details(recommendation['content_based_filtering'],db_session)
+  File "D:\FYP\Implementation\FYP-Implementation-for-deloyment\salary-recommendation-backend\ServiceImplementation\GetRecommendationServiceImpl.py", line 27, in add_inflation_details
+    inflation_amount = salary['salary_amount'] * rate
+TypeError: unsupported operand type(s) for *: 'decimal.Decimal' and 'float'
+2023-05-09 19:02:25,247 INFO 127.0.0.1 - - [09/May/2023 19:02:25] "[35m[1mPOST /api/v1/get_recommendation HTTP/1.1[0m" 500 -
+2023-05-09 19:04:18,578 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:04:18,578 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:05:43,477 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:05:43,478 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:08:19,014 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:08:19,014 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:08:29,850 INFO 127.0.0.1 - - [09/May/2023 19:08:29] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-09 19:10:57,677 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:10:57,677 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:11:06,552 INFO 127.0.0.1 - - [09/May/2023 19:11:06] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-09 19:11:31,317 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:11:31,317 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:11:45,206 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:11:45,207 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:11:54,461 INFO 127.0.0.1 - - [09/May/2023 19:11:54] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-09 19:12:11,438 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:12:11,438 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:12:17,186 INFO 127.0.0.1 - - [09/May/2023 19:12:17] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-09 19:13:36,381 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:13:36,381 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:13:45,103 INFO 127.0.0.1 - - [09/May/2023 19:13:45] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-09 19:14:13,894 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:14:13,895 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:14:20,113 INFO 127.0.0.1 - - [09/May/2023 19:14:20] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-09 19:14:49,459 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:14:49,459 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:15:00,578 INFO 127.0.0.1 - - [09/May/2023 19:15:00] "POST /api/v1/get_recommendation HTTP/1.1" 200 -
+2023-05-09 19:15:38,739 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:15:38,739 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:16:11,490 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:16:11,490 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:16:24,587 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-09 19:16:24,587 INFO [33mPress CTRL+C to quit[0m
+2023-05-09 19:16:36,361 INFO 127.0.0.1 - - [09/May/2023 19:16:36] "POST /api/v1/get_recommendation HTTP/1.1" 200 -

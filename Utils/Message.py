@@ -37,3 +37,6 @@ class Message(Enum):
     BEST_MATCH_NO_FOUND = ("Based on the inputs you passed there were no best match, hence sending "
                            "based on the designation selected", 200)
     BEST_MATCH_FOUND = ("Found the best match",200)
+    MONTH_NOT_FOUND = ("Invalid month",400)
+    NO_INFO_TO_UPDATE = ("No information to update",200)
+    SUCCESSFULLY_UPDATED_THE_INFLATION = ("Inflation rate is updated successfully",200)
